@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modernización Espacio PROPAL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .backdrop-blur-nav { backdrop-filter: blur(12px); }
+        .modal-blur { backdrop-filter: blur(8px); }
+        .tech-card:hover { transform: translateY(-8px); }
+        .transition-all { transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 selection:bg-blue-500/20">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center bg-white/80 backdrop-blur-nav border-b border-slate-200">
+        <div class="text-xl font-bold tracking-tighter text-blue-900 flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white">P</div>
+            PROPAL_MODERN
+        </div>
+        <div class="hidden md:flex gap-8 text-sm font-medium text-slate-600">
+            <a href="#visión" class="hover:text-blue-600 transition">Visión</a>
+            <a href="#tecnología" class="hover:text-blue-600 transition">Tecnología</a>
+            <a href="#automatización" class="hover:text-blue-600 transition">Automatización</a>
+            <a href="#inversión" class="hover:text-blue-600 transition">Inversión</a>
+        </div>
+        <button class="px-6 py-2 bg-slate-900 text-white rounded-full text-sm font-semibold hover:bg-blue-600 transition shadow-lg shadow-blue-500/20">
+            Solicitar Propuesta
+        </button>
+    </nav>
+
+    <section class="hero">
+  <div class="hero-content">
+    <h1 class="title">
+      Modernización espacio
+      <span class="propal">PROPAL</span>
+    </h1>
+  </div>
+
+        <!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>PROPAL - Hero Section</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap"
+        rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        html{
+            scroll-behavior:smooth;
+        }
+
+        body{
+            background:#0b0b0b;
+            overflow-x:hidden;
+            font-family:"Montserrat", sans-serif;
+        }
+
+        /* ======================================== */
+        /* HERO PRINCIPAL - PROPAL */
+        /* ======================================== */
+
+        #hero-propal{
+            width:100%;
+            height:100vh;
+            position:relative;
+            overflow:hidden;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            padding:5em;
+
+            background:
+                url("https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=1974&auto=format&fit=crop")
+                center center / cover no-repeat;
+        }
+
+        /* Overlay elegante */
+
+        #hero-propal .overlay{
+            position:absolute;
+            inset:0;
+
+            background:
+                radial-gradient(circle at center,
+                rgba(0,0,0,0.15),
+                rgba(0,0,0,0.75));
+
+            z-index:1;
+        }
+
+        /* Contenedor palabra */
+
+        #hero-propal .word{
+            position:relative;
+            z-index:2;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            width:100%;
+            max-width:900px;
+        }
+
+        /* Cada letra */
+
+        #hero-propal .hover{
+            flex:1;
+
+            display:grid;
+            grid-template-rows:1fr 1fr;
+
+            position:relative;
+
+            height:70vh;
+        }
+
+        /* Áreas hover invisibles */
+
+        #hero-propal .hover div{
+            position:relative;
+            z-index:5;
+        }
+
+        /* Letras */
+
+        #hero-propal h1{
+            position:absolute;
+
+            top:50%;
+            left:0;
+            right:0;
+
+            margin-top:-40px;
+
+            text-align:center;
+
+            color:white;
+
+            font-size:clamp(3rem, 8vw, 8rem);
+            font-weight:900;
+
+            letter-spacing:8px;
+
+            text-shadow:
+                0 10px 30px rgba(0,0,0,0.45),
+                0 0 25px rgba(255,255,255,0.08);
+
+            transition:
+                transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+                margin-top 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+
+            user-select:none;
+
+            z-index:0;
+
+            animation:floating 4s ease-in-out infinite;
+        }
+
+        /* Hover superior */
+
+        #hero-propal .hover div:nth-child(1):hover ~ h1{
+            margin-top:-15px;
+            transform:scale(1.08);
+        }
+
+        /* Hover inferior */
+
+        #hero-propal .hover div:nth-child(2):hover ~ h1{
+            margin-top:-70px;
+            transform:scale(1.18);
+        }
+
+        /* Delay diferente por letra */
+
+        #hero-propal .hover:nth-child(2) h1{
+            animation-delay:0.2s;
+        }
+
+        #hero-propal .hover:nth-child(3) h1{
+            animation-delay:0.4s;
+        }
+
+        #hero-propal .hover:nth-child(4) h1{
+            animation-delay:0.6s;
+        }
+
+        #hero-propal .hover:nth-child(5) h1{
+            animation-delay:0.8s;
+        }
+
+        #hero-propal .hover:nth-child(6) h1{
+            animation-delay:1s;
+        }
+
+        /* Animación flotante */
+
+        @keyframes floating{
+
+            0%,100%{
+                transform:translateY(0px);
+            }
+
+            50%{
+                transform:translateY(-10px);
+            }
+        }
+
+        /* Texto secundario */
+
+        .hero-subtitle{
+            position:absolute;
+            bottom:80px;
+            left:50%;
+            transform:translateX(-50%);
+
+            z-index:3;
+
+            color:rgba(255,255,255,0.8);
+
+            font-size:14px;
+            letter-spacing:4px;
+            text-transform:uppercase;
+        }
+
+        /* Responsive */
+
+        @media(max-width:768px){
+
+            #hero-propal{
+                padding:2em;
+            }
+
+            #hero-propal .hover{
+                height:45vh;
+            }
+
+            #hero-propal h1{
+                letter-spacing:2px;
+            }
+
+            .hero-subtitle{
+                font-size:11px;
+                text-align:center;
+                width:90%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ======================================== -->
+    <!-- HERO SECTION - PROPAL -->
+    <!-- ======================================== -->
+
+    <section id="hero-propal">
+
+        <div class="overlay"></div>
+
+        <div class="word">
+
+            <div class="hover">
+                <div></div>
+                <div></div>
+                <h1>P</h1>
+            </div>
+
+            <div class="hover">
+                <div></div>
+                <div></div>
+                <h1>R</h1>
+            </div>
+
+            <div class="hover">
+                <div></div>
+                <div></div>
+                <h1>O</h1>
+            </div>
+
+            <div class="hover">
+                <div></div>
+                <div></div>
+                <h1>P</h1>
+            </div>
+
+            <div class="hover">
+                <div></div>
+                <div></div>
+                <h1>A</h1>
+            </div>
+
+            <div class="hover">
+                <div></div>
+                <div></div>
+                <h1>L</h1>
+            </div>
+
+        </div>
+
+        <div class="hero-subtitle">
+            Modernización tecnológica y audiovisual
+        </div>
+
+    </section>
+
+</body>
+</html>
+
+
+
+    <!-- Hero -->
+    <header class="pt-40 pb-20 px-6 max-w-7xl mx-auto text-center">
+        <span class="px-4 py-1.5 rounded-full bg-blue-100 text-blue-700 text-xs font-bold tracking-widest uppercase mb-6 inline-block">Colegio Alemán de Cali</span>
+        <h1 class="text-6xl md:text-8xl font-bold tracking-tighter text-slate-950 mb-8 leading-[0.9]">Modernización<br />Espacio PROPAL</h1>
+        <p class="text-xl text-slate-500 max-w-2xl mx-auto mb-12">Redefiniendo el entorno educativo con una arquitectura inteligente y tecnología audiovisual de vanguardia.</p>
+    </header>
+
+    <!-- Vision Section -->
+    <section id="visión" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-5xl font-bold tracking-tight mb-8">La arquitectura al servicio del conocimiento.</h2>
+                <p class="text-lg text-slate-600 leading-relaxed mb-6">PROPAL no es solo una sala; es un ecosistema. Diseñamos un ambiente donde la acústica, la óptica y la automatización convergen para eliminar fricciones y elevar el aprendizaje.</p>
+            </div>
+            <div class="h-[400px] bg-slate-200 rounded-[2rem] overflow-hidden relative shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=2070" alt="Vision" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </section>
+
+<!-- Tech Grid --> <section id="tecnología" class="py-24 px-6 bg-white"> <div class="max-w-7xl mx-auto"> <h3 class="text-4xl font-bold mb-16 text-center">Ecosistema Tecnológico</h3> <div id="tech-grid" class="grid md:grid-cols-3 gap-6"></div> </div> </section> <!-- Automation Dashboard --> <section id="automatización" class="py-24 px-6 max-w-7xl mx-auto"> <h3 class="text-4xl font-bold mb-16 text-center">Automatización Inteligente</h3> <div class="bg-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-2xl"> <div class="grid md:grid-cols-2 gap-12 items-center"> <div> <h4 class="text-2xl font-bold mb-6">Escenarios Preconfigurados</h4> <div id="scene-buttons" class="flex flex-wrap gap-4 mb-8"></div> <div id="scene-details" class="space-y-4"> <!-- Dynamic Content --> </div> </div> <div id="dashboard-visual" class="bg-slate-800 rounded-2xl h-64 flex items-center justify-center relative overflow-hidden border border-slate-700"> <div id="visual-glow" class="w-32 h-32 rounded-full blur-3xl opacity-50 bg-blue-500 transition-colors duration-500"></div> <span id="visual-text" class="z-10 font-bold text-lg">PRESENTACIÓN ACTIVE</span> </div> </div> </div> </section>
+
+
+
+    <!-- Modal -->
+    <div id="tech-modal" class="fixed inset-0 z-[60] hidden items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm">
+        <div id="modal-content" class="bg-white rounded-[2rem] p-8 max-w-2xl w-full shadow-2xl relative">
+            <button onclick="closeModal()" class="absolute top-6 right-6 p-2 rounded-full hover:bg-slate-100"><span class="text-xl font-bold">✕</span></button>
+            <div id="modal-icon" class="w-16 h-16 bg-slate-50 rounded-3xl flex items-center justify-center mb-6"></div>
+            <h2 id="modal-title" class="text-3xl font-bold mb-4"></h2>
+            <div class="h-48 bg-slate-100 rounded-2xl mb-6 flex items-center justify-center text-slate-400 italic">Render placeholder</div>
+            <p id="modal-desc" class="text-slate-600 text-lg mb-6"></p>
+            <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                <h5 class="font-bold text-sm uppercase tracking-wider mb-3 text-slate-400">Especificaciones Técnicas</h5>
+                <p id="modal-spec" class="text-slate-800 font-medium"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        const TECH_ITEMS = [
+            { title: "Pantalla LED 4K COB", desc: "Visualización cinematográfica de ultra alta definición con tecnología COB de máxima densidad de pixeles.", metric: "4K · 120Hz · HDR10", color: "#00d4ff", spec: "Pixel Pitch 1.5mm, Brillo 800nits, Contraste 5000:1", icon: "📺" },
+            { title: "Sistema de Sonido 7.1", desc: "Audio envolvente premium con procesamiento DSP avanzado y calibración acústica inteligente por zona.", metric: "−82% latencia", color: "#7c3aed", spec: "Configuración 7.1, Procesamiento 24-bit/96kHz, Respuesta 20Hz-20kHz", icon: "🔊" },
+            { title: "Cámaras PTZ con IA", desc: "Seguimiento automático de ponentes con reconocimiento facial y encuadre inteligente en tiempo real.", metric: "IA · Auto-tracking", color: "#06b6d4", spec: "Sensor 4K, Zoom 20x, Seguimiento automático por IA", icon: "📹" },
+            { title: "Automatización Dommie", desc: "Orquestación centralizada de todos los sistemas AV con presets escénicos de un solo toque.", metric: "1-touch scenes", color: "#10b981", spec: "Protocolo Dante, Control IP, Presets de escena", icon: "⚡" },
+            { title: "Pantallas Touch 4K", desc: "Interfaces táctiles inteligentes distribuidas con sincronización instantánea entre dispositivos.", metric: "0ms sync", color: "#f59e0b", spec: "Multitouch 20 puntos, Anti-glare 4K, Conectividad Wi-Fi 6", icon: "🖥️" },
+            { title: "Videoconferencia Híbrida", desc: "Integración nativa con Zoom, Teams y Meet con cámara dual y micrófonos de campo lejano.", metric: "Zoom · Teams · Meet", color: "#ec4899", spec: "Microfonía Beamforming, Cancelación de eco acústico", icon: "🎙️" },
+            { title: "Sala de Control AV", desc: "Centro de operaciones dedicado con monitoreo en tiempo real de todos los sistemas instalados.", metric: "24/7 monitoring", color: "#8b5cf6", spec: "Consola de gestión táctil, Diagnóstico remoto, UPS inteligente", icon: "🎛️" },
+            { title: "Integración AV/TI", desc: "Arquitectura de red convergente con ancho de banda dedicado y seguridad de nivel empresarial.", metric: "10Gbps · Seguro", color: "#14b8a6", spec: "Ancho de banda dedicado, Cifrado AES-256, Firewall hardware", icon: "🌐" },
+            { title: "Iluminación Escénica", desc: "Sistema DALI/DMX con 48 escenas preconfiguradas y sensores de presencia automáticos.", metric: "48 escenas auto", color: "#f97316", spec: "Sistema DMX512, Control por sensor, Escenas personalizables", icon: "💡" }
+        ];
+
+        const scenes = {
+            "Presentación": { color: "bg-blue-500", led: "Optimizado para visualización", sound: "Modo voz clara", lights: "70%" },
+            "Conferencia": { color: "bg-purple-500", led: "Dual-split", sound: "Envolvente 7.1", lights: "40%" },
+            "Workshop": { color: "bg-emerald-500", led: "Colaborativo", sound: "Ambiente", lights: "100%" }
+        };
+
+        // Render Tech Items
+        const techGrid = document.getElementById('tech-grid');
+        TECH_ITEMS.forEach((item, i) => {
+            const card = document.createElement('div');
+            card.className = "tech-card p-8 bg-slate-50 border border-slate-100 rounded-[2rem] flex flex-col justify-between cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300";
+            card.innerHTML = `
+                <div style="color: ${item.color}" class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-slate-100 text-xl">${item.icon}</div>
+                <h4 class="text-xl font-semibold mb-2">${item.title}</h4>
+                <p class="text-slate-500 text-sm mb-6 flex-grow">${item.desc}</p>
+                <span class="text-[10px] font-bold uppercase tracking-widest bg-white px-3 py-1 rounded-full self-start text-slate-600 border border-slate-100">${item.metric}</span>
+            `;
+            card.onclick = () => showModal(item);
+            techGrid.appendChild(card);
+        });
+
+        // Modal Logic
+        const modal = document.getElementById('tech-modal');
+        function showModal(item) {
+            document.getElementById('modal-title').innerText = item.title;
+            document.getElementById('modal-desc').innerText = item.desc;
+            document.getElementById('modal-spec').innerText = item.spec;
+            document.getElementById('modal-icon').innerHTML = `<span class="text-2xl">${item.icon}</span>`;
+            modal.classList.replace('hidden', 'flex');
+        }
+        function closeModal() { modal.classList.replace('flex', 'hidden'); }
+
+        // Automation Dashboard Logic
+        const btnContainer = document.getElementById('scene-buttons');
+        const detailsContainer = document.getElementById('scene-details');
+        const visualGlow = document.getElementById('visual-glow');
+        const visualText = document.getElementById('visual-text');
+
+        function updateAutomation(sceneName) {
+            const data = scenes[sceneName];
+            detailsContainer.innerHTML = `
+                <div class="flex justify-between border-b border-slate-700 pb-2 text-slate-400"><span>Pantalla LED</span><span class="text-white">${data.led}</span></div>
+                <div class="flex justify-between border-b border-slate-700 pb-2 text-slate-400"><span>Audio</span><span class="text-white">${data.sound}</span></div>
+                <div class="flex justify-between border-b border-slate-700 pb-2 text-slate-400"><span>Iluminación</span><span class="text-white">${data.lights}</span></div>
+            `;
+            visualGlow.className = `w-32 h-32 rounded-full blur-3xl opacity-50 transition-colors duration-500 ${data.color}`;
+            visualText.innerText = `${sceneName.toUpperCase()} ACTIVE`;
+            
+            document.querySelectorAll('#scene-buttons button').forEach(btn => {
+                btn.className = btn.innerText === sceneName ? "px-6 py-3 rounded-full text-sm font-semibold bg-white text-slate-900" : "px-6 py-3 rounded-full text-sm font-semibold bg-slate-800 hover:bg-slate-700";
+            });
+        }
+
+        Object.keys(scenes).forEach(scene => {
+            const btn = document.createElement('button');
+            btn.innerText = scene;
+            btn.onclick = () => updateAutomation(scene);
+            btnContainer.appendChild(btn);
+        });
+        updateAutomation("Presentación");
+    </script>
+</body>
+</html>
