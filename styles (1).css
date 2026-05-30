@@ -1,0 +1,127 @@
+body{
+  padding: 25px;
+}
+.title {
+	color: #5C6AC4;
+}
+
+
+
+
+/* BARRAS PREMIUM */
+.audio-bar{
+    width:14px;
+    border-radius:999px;
+    background: linear-gradient(to top,#2563eb,#22d3ee);
+    animation: sound 1.2s ease-in-out infinite;
+    box-shadow:
+        0 0 10px rgba(34,211,238,.4),
+        0 0 30px rgba(34,211,238,.2);
+}
+
+.audio-bar:nth-child(2){ animation-delay:.2s; }
+.audio-bar:nth-child(3){ animation-delay:.4s; }
+.audio-bar:nth-child(4){ animation-delay:.6s; }
+.audio-bar:nth-child(5){ animation-delay:.8s; }
+
+.audio-bar-low{
+    animation: lowSound 2s ease-in-out infinite;
+}
+
+@keyframes sound{
+    0%,100%{
+        transform:scaleY(.7);
+    }
+    50%{
+        transform:scaleY(1.25);
+    }
+}
+
+@keyframes lowSound{
+    0%,100%{
+        opacity:.5;
+        transform:scaleY(.9);
+    }
+    50%{
+        opacity:.8;
+        transform:scaleY(1);
+    }
+}
+
+/* ONDAS ENVOLVENTES */
+.sound-wave{
+    position:absolute;
+    border:1px solid rgba(34,211,238,.25);
+    border-radius:999px;
+    animation:ripple 4s linear infinite;
+}
+
+.wave-1{
+    width:120px;
+    height:120px;
+}
+
+.wave-2{
+    width:220px;
+    height:220px;
+    animation-delay:1s;
+}
+
+.wave-3{
+    width:320px;
+    height:320px;
+    animation-delay:2s;
+}
+
+@keyframes ripple{
+    0%{
+        transform:scale(.7);
+        opacity:.7;
+    }
+    100%{
+        transform:scale(1.2);
+        opacity:0;
+    }
+}
+
+/* BEAMFORMING */
+.beam{
+    position:absolute;
+    width:220px;
+    height:2px;
+    background:linear-gradient(to right,
+        transparent,
+        rgba(34,211,238,.8),
+        transparent);
+    left:50%;
+    top:50%;
+    transform-origin:left center;
+    filter:blur(.5px);
+}
+
+.beam-1{
+    transform:rotate(-25deg);
+}
+
+.beam-2{
+    transform:rotate(0deg);
+}
+
+.beam-3{
+    transform:rotate(25deg);
+}
+
+/* EFECTO 3D */
+.perspective{
+    transform-style:preserve-3d;
+    transition:transform .4s ease;
+}
+
+.perspective:hover{
+    transform:
+        rotateX(4deg)
+        rotateY(-4deg)
+        scale(1.01);
+}
+
+
