@@ -1,0 +1,2250 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auditorio PROPAL 2027 · Caso de Negocio Estratégico · Colegio Bolívar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+<script>
+const CONFIG = {
+
+  /* ── KPIs HERO ── */
+  kpis: [
+    { valor: "7.2",  label: "Canales de sonido" },
+    { valor: "136″", label: "LED COB 4K"         },
+    { valor: "4K",   label: "Cámaras PTZ IA"     },
+    { valor: "100%", label: "Automatización"     },
+  ],
+
+  /* ── GALERÍA (reemplazar src con rutas reales) ── */
+  galeria: [
+    { src: "FOTOS/reder completo sala.png",  label: "Vista Principal del Auditorio",    emoji: "🏛" },
+    { src: "FOTOS/Gemini_Generated_Image_7dvpoh7dvpoh7dvp.png",  label: "Pantalla LED COB 136″",            emoji: "🖥" },
+    { src: "FOTOS/ENTRADA RENDER.png",  label: "Sistema de Audio 7.2",             emoji: "🔊" },
+    { src: "FOTOS/SALA DE CONTROL.png",  label: "Sala de Control Técnico",          emoji: "⚙️" },
+    { src: "FOTOS/render entrada.png",  label: "Tratamiento Acústico",             emoji: "🎵" },
+  ],
+
+  /* ── VIDEO (reemplazar con ruta o URL real) ── */
+  video: {
+    src:    "FOTOS/Dolby-Presents-The-World-Of-Sound-Demo-D_Media_91BUM3WhCfo_001_1080p.mp4",                        /* ruta local o URL */
+    poster: "FOTOS/poster video demo sonido.png",                        /* FOTOS/video_poster.jpg */
+    titulo: "Escuche la diferencia",
+  },
+
+};
+</script>
+
+<style>
+:root{
+  --cb-blue:#004E96; --cb-mid:#1A6BBF; --cb-lt:#D5E0EB;
+  --cb-xl:#EBF2F9;   --cb-navy:#002E5C; --cb-dark:#001428;
+  --ink:#1A1A2E;     --muted:#5A6472;   --border:#D8E4F0;
+  --white:#FFFFFF;   --off:#F4F8FC;     --nav-h:64px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;}
+.serif{font-family:'Libre Baskerville',Georgia,serif;}
+.mono{font-family:'DM Mono',monospace;}
+
+/* FULL-HEIGHT SECTIONS */
+.fs{min-height:100vh;min-height:calc(100svh);padding-top:var(--nav-h);display:flex;flex-direction:column;justify-content:center;}
+.fs-auto{padding-top:calc(var(--nav-h) + 64px);padding-bottom:64px;}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--cb-xl);}
+::-webkit-scrollbar-thumb{background:var(--cb-blue);border-radius:3px;}
+
+/* ═══ TOP NAVBAR ═══ */
+#nav{height:var(--nav-h);position:fixed;top:0;left:0;right:0;z-index:90;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:rgba(0,78,150,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.1);transition:background .4s;}
+#nav.scrolled{background:rgba(0,46,92,.99);}
+.ntl{font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);transition:color .2s;position:relative;padding-bottom:2px;text-decoration:none;}
+.ntl::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1.5px;background:var(--cb-lt);transform:scaleX(0);transition:transform .25s cubic-bezier(.23,1,.32,1);transform-origin:left;}
+.ntl.active,.ntl:hover{color:white;}.ntl.active::after,.ntl:hover::after{transform:scaleX(1);}
+
+/* ═══ SIDE NAV ═══ */
+#snc{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:80;display:flex;align-items:center;gap:9px;pointer-events:none;}
+#snp{display:flex;flex-direction:column;align-items:flex-end;gap:5px;background:rgba(0,46,92,.93);backdrop-filter:blur(16px);border:1px solid rgba(213,224,235,.14);padding:14px 13px;border-radius:18px;pointer-events:auto;transform:translateX(160%);opacity:0;transition:transform .4s cubic-bezier(.23,1,.32,1),opacity .3s;}
+#snp.open{transform:translateX(0);opacity:1;}
+.fni{display:flex;align-items:center;gap:8px;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
+.fni:hover,.fni.active{color:var(--cb-lt);}
+#snt{display:flex;flex-direction:column;align-items:center;gap:6px;padding:11px 8px;background:rgba(0,78,150,.8);backdrop-filter:blur(12px);border:1px solid rgba(213,224,235,.18);border-radius:999px;cursor:pointer;pointer-events:auto;opacity:.4;transition:opacity .3s;}
+#snt:hover,#snt.open{opacity:1;}
+.dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.22);cursor:pointer;transition:all .25s;flex-shrink:0;}
+.dot.active{background:var(--cb-lt);box-shadow:0 0 6px rgba(213,224,235,.5);width:9px;height:9px;}
+
+/* ═══ PRESENTER ═══ */
+#xpb{position:fixed;bottom:22px;left:22px;z-index:100;padding:10px 22px;background:var(--cb-blue);color:white;border-radius:999px;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;display:none;border:none;box-shadow:0 4px 24px rgba(0,78,150,.45);}
+
+/* ═══ LABELS & BADGES ═══ */
+.lbl{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--cb-mid);display:flex;align-items:center;gap:8px;}
+.lbl::before{content:'';display:inline-block;width:22px;height:2px;background:var(--cb-blue);border-radius:1px;flex-shrink:0;}
+.lblt{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--cb-lt);display:flex;align-items:center;gap:8px;}
+.lblt::before{content:'';display:inline-block;width:22px;height:2px;background:var(--cb-lt);border-radius:1px;flex-shrink:0;}
+.badge-pill{display:inline-flex;align-items:center;gap:6px;padding:4px 14px;border:1px solid rgba(213,224,235,.32);border-radius:999px;background:rgba(213,224,235,.1);font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.8);}
+.badge-light{background:var(--cb-xl);color:var(--cb-blue);border-radius:999px;padding:4px 12px;font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;}
+.badge-warn{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);color:#92400E;border-radius:10px;padding:10px 16px;font-size:12px;font-weight:600;}
+
+/* ═══ APPEAR ═══ */
+.ap{opacity:0;transform:translateY(22px);transition:opacity .75s ease,transform .75s ease;}
+.ap.vis{opacity:1;transform:none;}
+.ap2{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
+.ap2.vis{opacity:1;transform:none;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.au{opacity:0;animation:fadeUp .9s cubic-bezier(.23,1,.32,1) forwards;}
+.d1{animation-delay:.1s}.d2{animation-delay:.3s}.d3{animation-delay:.5s}.d4{animation-delay:.7s}.d5{animation-delay:.9s}
+
+/* ═══ CARDS ═══ */
+.cw{background:white;border:1px solid var(--border);border-radius:20px;padding:26px;transition:box-shadow .25s,transform .25s,border-color .25s;}
+.cw:hover{box-shadow:0 10px 40px rgba(0,78,150,.1);transform:translateY(-3px);border-color:rgba(0,78,150,.2);}
+.cb{background:rgba(0,78,150,.06);border:1px solid var(--border);border-radius:20px;padding:26px;transition:border-color .25s,background .25s;}
+.cb:hover{background:rgba(0,78,150,.1);border-color:var(--cb-blue);}
+.cn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:26px;}
+.glass{background:rgba(255,255,255,.08);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.15);border-radius:20px;}
+
+/* ═══ HERO ═══ */
+/* ════════════════════════════════
+   HERO PREMIUM CON VIDEO FONDO
+════════════════════════════════ */
+
+#hero{
+    position:relative;
+    overflow:hidden;
+    background:#001428;
+}
+
+/* Video de fondo */
+.hero-video{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:0;
+    opacity: 0.5; /* Ajusta entre 0.15 y 0.5 */
+    pointer-events:none;
+}
+
+/* Gradiente encima del video */
+#hero::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    z-index:1;
+
+    background:
+        linear-gradient(
+            148deg,
+            rgba(0,20,40,.88) 0%,
+            rgba(0,46,92,.82) 35%,
+            rgba(0,78,150,.76) 65%,
+            rgba(10,106,184,.82) 100%
+        );
+}
+
+/* Grid y efectos */
+#hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    z-index:2;
+
+    background-image:
+        radial-gradient(
+            ellipse 65% 55% at 70% 45%,
+            rgba(213,224,235,.08) 0%,
+            transparent 60%
+        ),
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        100%,
+        72px 72px,
+        72px 72px;
+}
+
+/* Contenido encima de todo */
+#hero > *:not(.hero-video){
+    position:relative;
+    z-index:3;
+}
+
+/* Letras PL */
+.pl{
+    font-family:'Libre Baskerville',serif;
+    font-size:clamp(4rem,12.5vw,10.5rem);
+    font-weight:700;
+    color:transparent;
+    -webkit-text-stroke:1.5px rgba(213,224,235,.4);
+    line-height:1;
+    display:inline-block;
+    transition:all .35s cubic-bezier(.23,1,.32,1);
+    cursor:default;
+    user-select:none;
+    animation:floatL 5s ease-in-out infinite;
+}
+
+.pl:nth-child(2){animation-delay:.2s}
+.pl:nth-child(3){animation-delay:.4s}
+.pl:nth-child(4){animation-delay:.6s}
+.pl:nth-child(5){animation-delay:.8s}
+.pl:nth-child(6){animation-delay:1s}
+
+.pl:hover{
+    color:white;
+    -webkit-text-stroke:0;
+    transform:scale(1.14) translateY(-8px);
+    text-shadow:0 0 45px rgba(213,224,235,.5);
+}
+
+@keyframes floatL{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-8px);
+    }
+}
+/* ════ PROBLEM SECTION ════ */
+#problema{background:var(--off);color:var(--ink);}
+.prob-item{border-top:1px solid var(--bdr);padding:24px 0;display:flex;gap:24px;align-items:start;transition:background .2s;cursor:default;}
+.prob-item:hover{background:rgba(0,78,150,.03);padding-left:8px;padding-right:8px;border-radius:12px;}
+.prob-num{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.2em;min-width:32px;padding-top:3px;}
+.prob-icon{font-size:22px;flex-shrink:0;}
+.prob-sev{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:2px 8px;border-radius:4px;}
+
+
+/* ═══ VISION ═══ */
+#vision{background:linear-gradient(158deg,#001020 0%,#002848 40%,#004080 75%,#004E96 100%);position:relative;overflow:hidden;}
+#vision::before{content:'';position:absolute;inset:0;background-image:radial-gradient(ellipse 80% 60% at 20% 80%,rgba(213,224,235,.05) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 80% 20%,rgba(0,100,200,.08) 0%,transparent 50%);}
+.pulse-ring{position:absolute;border-radius:50%;border:1px solid rgba(213,224,235,.12);animation:ringPulse 4s ease-in-out infinite;}
+@keyframes ringPulse{0%,100%{transform:scale(1);opacity:.4}50%{transform:scale(1.05);opacity:.15}}
+.story-card{background:rgba(255,255,255,.055);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.11);border-radius:22px;padding:28px;transition:all .4s;}
+.story-card:hover{background:rgba(255,255,255,.09);border-color:rgba(213,224,235,.28);}
+.count-up{display:inline-block;}
+
+/* ═══ GALLERY ═══ */
+#gallery{background:var(--cb-dark);position:relative;overflow:hidden;}
+.gallery-main{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:20px;background:#000;}
+.gallery-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s cubic-bezier(.16,1,.3,1);display:flex;align-items:center;justify-content:center;}
+.gallery-slide.on{opacity:1;}
+.gallery-slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.05);transition:transform 8s ease-out;}
+.gallery-slide.on img{transform:scale(1);}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,16,30,.9) 0%,transparent 40%,transparent 70%,rgba(0,16,30,.4) 100%);}
+.gallery-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#001428,#002E5C);color:rgba(255,255,255,.3);}
+.slide-dot{width:32px;height:3px;border-radius:2px;background:rgba(255,255,255,.25);cursor:pointer;transition:all .3s;}
+.slide-dot.on{background:white;width:48px;}
+.thumb-btn{width:60px;height:42px;border-radius:8px;overflow:hidden;border:2px solid transparent;cursor:pointer;transition:all .3s;flex-shrink:0;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);font-size:18px;}
+.thumb-btn.on{border-color:rgba(255,255,255,.6);transform:scale(1.05);}
+.thumb-btn img{width:100%;height:100%;object-fit:cover;}
+
+/* ═══ AUDIO EXPERIENCE ═══ */
+#audio-exp{background:linear-gradient(160deg,#001020 0%,#001c38 50%,#002e5c 100%);position:relative;overflow:hidden;}
+.video-cinema{border-radius:20px;overflow:hidden;background:#000;position:relative;box-shadow:0 40px 100px rgba(0,0,0,.8);}
+.video-cinema video{display:block;width:100%;}
+.video-placeholder{aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#000d1a,#001830);text-align:center;gap:16px;}
+.play-btn-big{width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.1);backdrop-filter:blur(12px);border:1.5px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;font-size:28px;}
+.play-btn-big:hover{background:rgba(0,78,150,.4);border-color:rgba(0,78,150,.6);transform:scale(1.08);}
+.audio-vis{
+    display:flex;
+    align-items:flex-end;
+    gap:4px;
+    height:50px;
+}
+
+.av{
+    width:5px;
+    background:#4da6ff;
+    border-radius:3px;
+    min-height:10px;
+    transform-origin:bottom center;
+    animation:wb 1.2s ease-in-out infinite;
+}.av:nth-child(2){animation-delay:.12s;animation-duration:.9s}
+.av:nth-child(3){animation-delay:.24s;animation-duration:1.4s}
+.av:nth-child(4){animation-delay:.36s;animation-duration:.8s}
+.av:nth-child(5){animation-delay:.48s;animation-duration:1.1s}
+.av:nth-child(6){animation-delay:.06s;animation-duration:1.3s}
+.av:nth-child(7){animation-delay:.30s;animation-duration:.7s}
+.av:nth-child(8){animation-delay:.42s;animation-duration:1.0s}
+@keyframes wb{0%,100%{transform:scaleY(.12)}50%{transform:scaleY(1)}}
+.audio-premium{
+    position:relative;
+    overflow:hidden;
+    background:#001428;
+}
+
+.audio-premium::before{
+    content:'';
+    position:absolute;
+    inset:0;
+
+    background-image:url('FOTOS/poster video demo sonido.png');
+    background-size:cover;
+    background-position:center;
+
+    opacity:.25;
+    z-index:0;
+}
+
+.audio-premium::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    z-index:1;
+
+    background:
+        radial-gradient(
+            ellipse 65% 55% at 70% 45%,
+            rgba(255,255,255,.08) 0%,
+            transparent 60%
+        ),
+        linear-gradient(
+            148deg,
+            rgba(0,20,40,.90) 0%,
+            rgba(0,46,92,.82) 35%,
+            rgba(0,78,150,.72) 65%,
+            rgba(10,106,184,.78) 100%
+        );
+}
+/* Contenido por encima */
+.audio-premium > div{
+    position:relative;
+    z-index:2;
+}
+
+
+
+
+/* ─── LETTER ANIMATION ────────────────────────────────────────── */
+.propal-letter {
+    font-family:'Libre Baskerville',serif;
+    font-size: clamp(4.5rem, 13vw, 11rem);
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(213,224,235,.45);
+    line-height: 1;
+    display: inline-block;
+    transition: all .35s cubic-bezier(.23,1,.32,1);
+    cursor: default; user-select:none;
+    animation: floatLetter 5s ease-in-out infinite;
+}
+.propal-letter:nth-child(2){animation-delay:.2s}
+.propal-letter:nth-child(3){animation-delay:.4s}
+.propal-letter:nth-child(4){animation-delay:.6s}
+.propal-letter:nth-child(5){animation-delay:.8s}
+.propal-letter:nth-child(6){animation-delay:1s}
+.propal-letter:hover {
+    color: white;
+    -webkit-text-stroke: 0px;
+    transform: scale(1.15) translateY(-8px);
+    text-shadow: 0 0 40px rgba(213,224,235,.5);
+}
+@keyframes floatLetter {
+    0%,100%{ transform: translateY(0); }
+    50%{ transform: translateY(-8px); }
+}
+@keyframes fadeUp {
+    from{opacity:0;transform:translateY(28px)}
+    to{opacity:1;transform:translateY(0)}
+}
+.anim-up { opacity:0; animation: fadeUp .9s cubic-bezier(.23,1,.32,1) forwards; }
+.d1{animation-delay:.1s}.d2{animation-delay:.25s}.d3{animation-delay:.45s}.d4{animation-delay:.65s}.d5{animation-delay:.85s}
+
+
+/* ═══ COMPARE ═══ */
+#compare{background:var(--cb-dark);}
+.cp-panel{border-radius:22px;overflow:hidden;position:relative;}
+.cp-row{display:flex;align-items:center;gap:12px;padding:13px 18px;border-bottom:1px solid rgba(255,255,255,.06);transition:background .2s;}
+.cp-row:last-child{border-bottom:none;}
+.cp-row:hover{background:rgba(255,255,255,.04);}
+.cp-row-now{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    background:rgba(220,38,38,.05);
+    border-bottom:1px solid rgba(220,38,38,.08);
+
+    padding:13px 18px;
+
+    transition:background .2s;
+}
+.cp-row-now:last-child{border-bottom:none;}
+.cp-row-now:hover{background:rgba(220,38,38,.09);}
+.cp-badge-bad{background:rgba(220,38,38,.12);color:#FCA5A5;border-radius:6px;padding:2px 8px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;}
+.cp-badge-good{background:rgba(0,200,120,.12);color:#6EE7B7;border-radius:6px;padding:2px 8px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;}
+.metric-pill{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:999px;font-size:10px;font-weight:700;}
+.metric-bad{background:rgba(239,68,68,.1);color:#FCA5A5;border:1px solid rgba(239,68,68,.2);}
+.metric-good{background:rgba(0,200,120,.1);color:#6EE7B7;border:1px solid rgba(0,200,120,.2);}
+
+/* ═══ IMPACT PILLARS ═══ */
+#impact-pillars{background:var(--off);}
+.pillar{border-radius:24px;padding:32px;overflow:hidden;position:relative;transition:transform .4s;}
+.pillar:hover{transform:translateY(-6px);}
+.pil-icon{width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px;}
+
+/* ═══ KPI DASHBOARD ═══ */
+#dashboard{background:var(--off);}
+.kc{background:white;border:1px solid var(--border);border-radius:20px;padding:22px 26px;transition:all .3s;position:relative;overflow:hidden;}
+.kc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cb-blue),var(--cb-mid));}
+.kc:hover{box-shadow:0 12px 40px rgba(0,78,150,.12);transform:translateY(-4px);}
+.knum{font-family:'Libre Baskerville',serif;font-size:2.6rem;font-weight:700;color:var(--cb-blue);line-height:1;}
+.kbar{height:5px;background:var(--cb-xl);border-radius:3px;overflow:hidden;margin-top:8px;}
+.kfill{height:100%;background:linear-gradient(90deg,var(--cb-blue),var(--cb-mid));border-radius:3px;transform-origin:left;transform:scaleX(0);transition:transform 1.4s cubic-bezier(.23,1,.32,1);}
+.kfill.vis{transform:scaleX(1);}
+
+/* ═══ GAUGE ═══ */
+.gauge-wrap{position:relative;width:110px;height:65px;margin:0 auto 6px;}
+.gauge-track{width:110px;height:55px;border-radius:55px 55px 0 0;border:9px solid var(--cb-xl);border-bottom:none;}
+.gauge-fill{position:absolute;bottom:0;left:0;width:110px;height:55px;transform-origin:50% 100%;border-radius:55px 55px 0 0;border:9px solid var(--cb-blue);border-bottom:none;transform:rotate(0deg);transition:transform 1.4s cubic-bezier(.23,1,.32,1);}
+
+/* ═══ TECH MODAL ═══ */
+#modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,30,70,.82);backdrop-filter:blur(14px);display:none;align-items:center;justify-content:center;padding:20px;}
+#modal-overlay.open{display:flex;}
+.modal-box{background:white;border-radius:24px;max-width:580px;width:100%;padding:36px;position:relative;max-height:90vh;overflow-y:auto;}
+
+/* ═══ QSC SCENE BUTTONS ═══ */
+.sb{padding:9px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.05);color:rgba(255,255,255,.6);font-size:11.5px;font-weight:600;cursor:pointer;transition:all .2s;}
+.sb.active,.sb:hover{background:rgba(0,78,150,.5);border-color:var(--cb-lt);color:white;}
+
+/* ═══ RACK ═══ */
+.ru{display:flex;align-items:center;gap:9px;padding:9px 13px;border-radius:8px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.03);font-size:11px;font-weight:500;color:rgba(255,255,255,.75);transition:all .2s;cursor:default;}
+.ru:hover{border-color:var(--cb-lt);background:rgba(0,78,150,.3);color:white;}
+.d8{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+
+/* ═══ PHASE BARS ═══ */
+.pbar2{height:6px;border-radius:3px;background:linear-gradient(90deg,var(--cb-blue),var(--cb-mid));transform-origin:left;transform:scaleX(0);transition:transform 1.3s cubic-bezier(.23,1,.32,1);}
+.pbar2.vis{transform:scaleX(1);}
+
+/* ═══ BUDGET TABLE ═══ */
+.brow td{padding:11px 9px;font-size:13px;}
+.brow:hover td{background:var(--cb-xl);}
+
+/* ═══ CHART CARDS ═══ */
+.chart-card{background:white;border:1px solid var(--border);border-radius:20px;padding:22px;}
+.chart-dark{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:22px;}
+
+/* ═══ TOGGLE ═══ */
+.tbtn{padding:9px 20px;border-radius:10px;font-size:12px;font-weight:700;letter-spacing:.05em;cursor:pointer;border:none;transition:all .25s;}
+.tbtn.active{background:var(--cb-blue);color:white;}
+.tbtn:not(.active){background:transparent;color:var(--muted);}
+
+/* ═══ TECH FILTER ═══ */
+.tf{padding:9px 16px;border-radius:12px;border:1px solid var(--border);background:white;color:var(--muted);font-size:11.5px;font-weight:600;cursor:pointer;transition:all .2s;}
+.tf.active{background:var(--cb-blue);border-color:var(--cb-blue);color:white;}
+
+/* ═══ ROADMAP TIMELINE ═══ */
+#roadmap{background:var(--cb-dark);}
+.tm-line{position:absolute;left:23px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--cb-blue),rgba(0,78,150,.2));}
+.tm-dot{width:48px;height:48px;border-radius:50%;background:var(--cb-blue);border:3px solid rgba(213,224,235,.3);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:white;flex-shrink:0;position:relative;z-index:2;}
+.milestone{display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,.55);}
+.milestone::before{content:'◆';font-size:7px;color:var(--cb-lt);}
+
+/* ═══ VALOR INSTITUCIONAL ═══ */
+#valor{background:var(--cb-navy);}
+.vi-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:28px;transition:all .4s;position:relative;overflow:hidden;}
+.vi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cb-lt),transparent);}
+.vi-card:hover{background:rgba(255,255,255,.09);border-color:rgba(213,224,235,.25);transform:translateY(-4px);}
+
+/* ═══ PROGRESS ARC ═══ */
+.arc-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;}
+</style>
+</head>
+<body>
+
+<!-- ══════ TOP NAVBAR ══════ -->
+<nav id="nav">
+  <div class="flex items-center gap-3">
+    <img src="FOTOS/CB-300x267.png" alt="CB" class="w-8 h-8 rounded-lg object-contain p-0.5" style="background:#004E96" onerror="this.src='https://placehold.co/32x32/004E96/D5E0EB?text=CB'">
+    <div>
+      <div class="font-bold text-xs text-white tracking-widest uppercase">Colegio Bolívar</div>
+      <div class="text-white/40" style="font-size:9px;letter-spacing:.12em;text-transform:uppercase">Auditorio Propal · Propuesta 2026</div>
+    </div>
+  </div>
+  <div class="hidden lg:flex items-center gap-5">
+    <a href="#hero"      class="ntl" data-sec="hero">Inicio</a>
+    <a href="#problema"  class="ntl" data-sec="problema">Diagnóstico</a>
+    <a href="#vision"    class="ntl" data-sec="vision">Visión 2027</a>
+    <a href="#gallery"   class="ntl" data-sec="gallery">Showroom</a>
+    <a href="#compare"   class="ntl" data-sec="compare">Antes/Después</a>
+    <a href="#impact-pillars" class="ntl" data-sec="impact-pillars">Impacto</a>
+    <a href="#dashboard" class="ntl" data-sec="dashboard">Dashboard</a>
+    <a href="#control"   class="ntl" data-sec="control">Control QSC</a>
+    <a href="#roadmap"   class="ntl" data-sec="roadmap">Roadmap</a>
+    <a href="#inversion" class="ntl" data-sec="inversion">Inversión</a>
+  </div>
+  <div class="flex items-center gap-3">
+    <button onclick="togglePresenter()" class="px-4 py-2 rounded-full text-xs font-bold tracking-wider border" style="border-color:rgba(255,255,255,.3);color:white">Modo Presentación</button>
+  </div>
+</nav>
+
+<!-- ══════ SIDE NAV ══════ -->
+<aside id="snc">
+  <div id="snp">
+    <span style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.2em;color:rgba(255,255,255,.25);padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.08);width:100%;text-align:right">Nav</span>
+    <a href="#hero"           class="fni" data-target="hero">Inicio <span class="dot" data-ind="hero"></span></a>
+    <a href="#problema"       class="fni" data-target="problema">Diagnóstico <span class="dot" data-ind="problema"></span></a>
+    <a href="#vision"         class="fni" data-target="vision">Visión 2027 <span class="dot" data-ind="vision"></span></a>
+    <a href="#gallery"        class="fni" data-target="gallery">Showroom 3D <span class="dot" data-ind="gallery"></span></a>
+    <a href="#audio-exp"      class="fni" data-target="audio-exp">Experiencia <span class="dot" data-ind="audio-exp"></span></a>
+    <a href="#compare"        class="fni" data-target="compare">Antes/Después <span class="dot" data-ind="compare"></span></a>
+    <a href="#impact-pillars" class="fni" data-target="impact-pillars">Impacto <span class="dot" data-ind="impact-pillars"></span></a>
+    <a href="#dashboard"      class="fni" data-target="dashboard">Dashboard <span class="dot" data-ind="dashboard"></span></a>
+    <a href="#control"        class="fni" data-target="control">Control QSC <span class="dot" data-ind="control"></span></a>
+    <a href="#tecnologia"     class="fni" data-target="tecnologia">Ecosistema <span class="dot" data-ind="tecnologia"></span></a>
+    <a href="#roadmap"        class="fni" data-target="roadmap">Roadmap <span class="dot" data-ind="roadmap"></span></a>
+    <a href="#inversion"      class="fni" data-target="inversion">Inversión <span class="dot" data-ind="inversion"></span></a>
+    <a href="#valor"          class="fni" data-target="valor">Valor <span class="dot" data-ind="valor"></span></a>
+    <a href="#liderazgo"      class="fni" data-target="liderazgo">Equipo <span class="dot" data-ind="liderazgo"></span></a>
+  </div>
+  <div id="snt">
+    <div class="dot" data-ind2="hero"></div><div class="dot" data-ind2="problema"></div>
+    <div class="dot" data-ind2="vision"></div><div class="dot" data-ind2="gallery"></div>
+    <div class="dot" data-ind2="audio-exp"></div><div class="dot" data-ind2="compare"></div>
+    <div class="dot" data-ind2="impact-pillars"></div><div class="dot" data-ind2="dashboard"></div>
+    <div class="dot" data-ind2="control"></div><div class="dot" data-ind2="tecnologia"></div>
+    <div class="dot" data-ind2="roadmap"></div><div class="dot" data-ind2="inversion"></div>
+    <div class="dot" data-ind2="valor"></div><div class="dot" data-ind2="liderazgo"></div>
+  </div>
+</aside>
+<button id="xpb" onclick="togglePresenter()">← Salir de Presentación</button>
+
+<!-- ══════════════════════════════════════════
+  1. HERO
+══════════════════════════════════════════ -->
+<section id="hero" class="fs" style="justify-content:center">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto">
+        <source src="FOTOS/RENDER BUCLE INICIO.mp4" type="video/mp4">
+    </video>
+  <div class="relative z-10 max-w-5xl mx-auto px-6 text-center w-full py-10">    
+    <div class="badge-pill mb-8 mx-auto w-fit au d1">Colegio Bolívar · Cali, Colombia</div>
+    
+    <!-- PROPAL letters -->
+        <div class="flex justify-center gap-0 sm:gap-2 mb-8 select-none">
+            <span class="propal-letter anim-up d1">P</span>
+            <span class="propal-letter anim-up d2">R</span>
+            <span class="propal-letter anim-up d2">O</span>
+            <span class="propal-letter anim-up d3">P</span>
+            <span class="propal-letter anim-up d4">A</span>
+            <span class="propal-letter anim-up d5">L</span>
+        </div>
+
+    <h1 class="serif text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5 au d3" style="text-shadow:0 3px 20px rgba(0,0,0,.4)">
+      Remodelación y Transformación<br><span style="color:var(--cb-lt)">del Auditorio Propal</span>
+    </h1>
+    <p class="text-white/50 text-base md:text-lg max-w-xl mx-auto mb-10 au d4">
+      Un espacio educativo de clase mundial.<br>Conectado, inmersivo, automático.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4 au d5">
+      <a href="#problema" class="px-7 py-3.5 rounded-full text-sm font-bold transition-all hover:scale-105" style="background:white;color:var(--cb-blue)">Ver el diagnóstico ↓</a>
+      <a href="#vision"   class="px-7 py-3.5 rounded-full text-sm font-bold border transition-all hover:scale-105" style="border-color:rgba(255,255,255,.3);color:white">Visión 2027</a>
+    </div>
+    
+    <!-- subtle scroll cue -->
+        <div class="mt-12 flex flex-col items-center gap-2 opacity-35 anim-up d5">
+            <span class="text-white text-xs tracking-widest uppercase">
+             Desliza para seguir viendo
+         </span>
+
+        <div class="w-px h-10 bg-white/30 animate-pulse"></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════
+     02 · DIAGNÓSTICO
+════════════════════════════════════════════════════════════════ -->
+<section id="problema" class="snap-section" style="background:var(--off-white)">
+  <div class="max-w-6xl mx-auto px-6 w-full py-16">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <div class="rv">
+        <div class="lbl mb-5">Diagnóstico</div>
+        <h2 class="serif text-4xl md:text-5xl font-light leading-tight mb-6" style="color:var(--navy)">
+          El auditorio tiene<br>
+          <em>seis brechas críticas.</em>
+        </h2>
+        <p class="text-base leading-relaxed mb-8" style="color:var(--muted);max-width:440px">
+          Cada una afecta la experiencia educativa, la imagen del colegio y su capacidad de conectarse con el mundo.
+        </p>
+        <a href="#vision" class="inline-flex items-center gap-2 text-sm font-semibold transition-all hover:gap-3" style="color:var(--blue)">
+          Ver la propuesta de transformación <span>→</span>
+        </a>
+      </div>
+
+      <div class="rv" style="transition-delay:.15s">
+        <div id="prob-list" class="space-y-0"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+  3. VISIÓN 2027 — ASPIRACIONAL
+══════════════════════════════════════════ -->
+<section id="vision" class="fs">
+  <!-- decorative rings -->
+  <div class="pulse-ring" style="width:600px;height:600px;top:50%;left:65%;transform:translate(-50%,-50%)"></div>
+  <div class="pulse-ring" style="width:900px;height:900px;top:50%;left:65%;transform:translate(-50%,-50%);animation-delay:1.5s"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6 w-full py-14">
+    <div class="lblt mb-4 ap">Visión 2027</div>
+    <div class="grid lg:grid-cols-2 gap-14 items-center mb-16">
+      <div class="ap">
+        <h2 class="serif text-3xl md:text-5xl font-bold text-white leading-tight mb-6">
+          Un espacio donde<br>la excelencia académica<br><span style="color:var(--cb-lt)">se puede ver, escuchar<br>y sentir.</span>
+        </h2>
+        <p class="text-white/60 text-base leading-relaxed mb-8">
+          Eso no es tecnología. Es la experiencia educativa que el Colegio Bolívar merece ofrecer.
+        </p>
+        
+      </div>
+
+      <!-- KPI metrics side -->
+      <div class="ap">
+        <div class="grid grid-cols-2 gap-4 mb-6">
+          <div class="story-card text-center">
+            <div class="serif text-4xl font-bold mb-2" style="color:var(--cb-lt)"><span class="count-up" data-target="1300">0</span>+</div>
+            <div class="text-white/60 text-xs uppercase tracking-wider">Estudiantes impactados</div>
+          </div>
+          <div class="story-card text-center">
+            <div class="serif text-4xl font-bold mb-2" style="color:var(--cb-lt)"><span class="count-up" data-target="16">0</span></div>
+            <div class="text-white/60 text-xs uppercase tracking-wider">Semanas de ejecución</div>
+          </div>
+          <div class="story-card text-center">
+            <div class="serif text-4xl font-bold mb-2" style="color:var(--cb-lt)"><span class="count-up" data-target="6">0</span></div>
+            <div class="text-white/60 text-xs uppercase tracking-wider">Sistemas integrados</div>
+          </div>
+          <div class="story-card text-center">
+            <div class="serif text-4xl font-bold mb-2" style="color:var(--cb-lt)"><span class="count-up" data-target="8">0</span>+</div>
+            <div class="text-white/60 text-xs uppercase tracking-wider">Años de vida útil</div>
+          </div>
+        </div>
+
+        <!-- 3 scenarios -->
+        <div class="space-y-3">
+          <div class="story-card">
+            <div class="flex items-start gap-3">
+              <span class="text-xl flex-shrink-0">🎓</span>
+              <div><div class="text-white font-bold text-sm mb-1">Clase con un experto internacional</div><div class="text-white/50 text-xs leading-relaxed">Un experto se conecta desde Estados Unidos. Y puede conversar con 200 estudiantes que escuchan con claridad perfecta desde cualquier asiento.</div></div>
+            </div>
+          </div>
+          <div class="story-card">
+            <div class="flex items-start gap-3">
+              <span class="text-xl flex-shrink-0">🏛️</span>
+              <div><div class="text-white font-bold text-sm mb-1">Eventos que generan impacto</div><div class="text-white/50 text-xs leading-relaxed">Graduaciones, conferencias y encuentros institucionales se desarrollan en un espacio diseñado para ofrecer una experiencia más atractiva, inmersiva y profesional para estudiantes, familias e invitados.</div></div>
+            </div>
+          </div>
+          <div class="story-card">
+            <div class="flex items-start gap-3">
+              <span class="text-xl flex-shrink-0">⚡</span>
+              <div><div class="text-white font-bold text-sm mb-1">Un auditorio listo para cada ocasión</div><div class="text-white/50 text-xs leading-relaxed">El docente toca un botón. En menos de 2 minutos, luces, audio, pantallas, cámaras y temperatura están calibrados para cualquier tipo de evento.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+  4. SHOWROOM / GALERÍA (placeholder para renders)
+══════════════════════════════════════════ -->
+<section id="gallery" class="sec" style="background:var(--cb-dark)">
+  <div class="w-full h-full flex flex-col" style="padding-top:var(--nav-h)">
+
+    <!-- Header -->
+    <div class="max-w-6xl mx-auto px-6 w-full pt-10 pb-6 ap">
+      <div class="lblt mb-3">Showroom Arquitectónico</div>
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h2 class="serif text-2xl md:text-3xl font-bold text-white">Visualización del Espacio Transformado</h2>
+        </div>
+        <div class="flex gap-2" id="gallery-thumbs"></div>
+      </div>
+    </div>
+
+    <!-- Main gallery stage -->
+    <div class="flex-1 max-w-6xl mx-auto px-6 w-full pb-8 ap">
+
+        <div class="wrap rv" style="transition-delay:.1s">
+          <div class="gallery-main" id="gallery-stage">
+            <!-- slides generados por JS -->
+            <div class="gallery-overlay"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-8 z-10">
+              <div style="font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:6px">Auditorio PROPAL · Colegio Bolívar</div>
+              <div id="gallery-lbl" class="text-white text-2xl font-light serif"></div>
+              <div class="flex items-center justify-between mt-4">
+                <div class="flex gap-2" id="gallery-dots"></div>
+                <div class="flex gap-2">
+                  <button onclick="gPrev()" class="w-9 h-9 rounded-full flex items-center justify-center text-white transition" style="background:rgba(255,255,255,.1);backdrop-filter:blur(8px)" onmouseover="this.style.background='rgba(255,255,255,.2)'" onmouseout="this.style.background='rgba(255,255,255,.1)'">‹</button>
+                  <button onclick="gNext()" class="w-9 h-9 rounded-full flex items-center justify-center text-white transition" style="background:rgba(255,255,255,.1);backdrop-filter:blur(8px)" onmouseover="this.style.background='rgba(255,255,255,.2)'" onmouseout="this.style.background='rgba(255,255,255,.1)'">›</button>
+                  <button onclick="openLB()" class="w-9 h-9 rounded-full flex items-center justify-center text-white transition" style="background:rgba(0,78,150,.4);backdrop-filter:blur(8px)" title="Pantalla completa">⛶</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      <!-- Instrucción placeholder -->
+    <div class="wrap mt-4 rv" style="transition-delay:.2s">
+      <p class="mono" style="font-size:10px;color:rgba(255,255,255,.2);letter-spacing:.1em">
+        ← ------------------------------------------------- →
+      </p>
+    </div>
+    <!-- EXPERIENCIAS INTERACTIVAS -->
+<div class="mt-8 grid md:grid-cols-2 gap-6">
+
+  <!-- VIDEO IA -->
+  <div class="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 backdrop-blur-sm">
+
+    <!-- Imagen preview -->
+    <img
+      src="FOTOS/Gemini_Generated_Image_yxoangyxoangyxoa.png"
+      alt="Transformación del espacio"
+      class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105">
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20"></div>
+
+    <!-- Contenido -->
+    <div class="relative z-10 p-8 h-[280px] flex flex-col justify-end">
+
+      <div class="w-16 h-16 rounded-full bg-white/15 backdrop-blur-md flex items-center justify-center text-3xl mb-5">
+        ▶
+      </div>
+
+      <h3 class="text-white text-2xl font-bold mb-2">
+        Video de Transformación
+      </h3>
+
+      <p class="text-white/70 text-sm leading-relaxed mb-5">
+        Visualiza en segundos la evolución conceptual del auditorio desde su estado actual hasta la propuesta tecnológica y arquitectónica final.
+      </p>
+
+      <button
+        onclick="openTransformationVideo()"
+        class="inline-flex items-center gap-2 w-fit px-5 py-3 rounded-full bg-white text-slate-900 text-xs font-bold uppercase tracking-wider hover:scale-105 transition">
+
+        ▶ Ver Video
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- RENDER 3D -->
+  <div class="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 backdrop-blur-sm">
+
+    <img
+      src="FOTOS/Gemini_Generated_Image_7dvpoh7dvpoh7dvp.png"
+      alt="Render 3D"
+      class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105">
+
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20"></div>
+
+    <div class="relative z-10 p-8 h-[280px] flex flex-col justify-end">
+
+      <div class="w-16 h-16 rounded-full bg-blue-500/20 backdrop-blur-md flex items-center justify-center text-3xl mb-5">
+        🕶️
+      </div>
+
+      <h3 class="text-white text-2xl font-bold mb-2">
+        Recorrido 3D Interactivo
+      </h3>
+
+      <p class="text-white/70 text-sm leading-relaxed mb-5">
+        Explora libremente el entorno virtual del proyecto, navega por el auditorio y visualiza la distribución propuesta de equipos y espacios.
+      </p>
+
+      <button
+        onclick="open3DRenderModal()"
+        class="inline-flex items-center gap-2 w-fit px-5 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold uppercase tracking-wider transition">
+
+        🌐 Explorar Modelo 3D
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+  <!-- MODAL VISTA PREVIA RENDER 3D SOLICITADO -->
+    <div id="render-3d-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md transition-all">
+
+    <div class="bg-white rounded-[2.5rem] p-8 max-w-5xl w-full shadow-2xl relative border border-slate-100 font-title overflow-hidden">
+
+        <!-- Botón cerrar -->
+        <button 
+            onclick="close3DRenderModal()" 
+            class="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 hover:text-slate-900 font-bold transition"
+        >
+            ✕
+        </button>
+
+        <!-- Header -->
+        <div class="mb-6 pr-12">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900">
+                Simulación Virtual del Espacio 3D
+            </h2>
+
+            <p class="text-slate-500 text-sm mt-2 leading-relaxed max-w-3xl">
+                El siguiente render fue desarrollado en la plataforma 
+                <span class="font-semibold text-slate-700">Floorplanner</span> 
+                como una simulación conceptual del entorno AV / IT propuesto.
+                Los espacios, mobiliario y equipos representados son un estimado visual y referencial,
+                ajustable durante la etapa de ejecución e implementación real del proyecto.
+            </p>
+        </div>
+
+        <!-- Contenedor principal -->
+        <div class="grid lg:grid-cols-[1.2fr_380px] gap-6">
+
+            <!-- Visual -->
+            <div class="w-full h-[420px] bg-slate-950 rounded-3xl overflow-hidden relative border border-slate-800 flex items-center justify-center group">
+
+                <!-- Fondo -->
+                <div 
+                    class="absolute inset-0 bg-cover bg-center opacity-40 blur-sm"
+                    style="background-image: url('FOTOS/Gemini_Generated_Image_7dvpoh7dvpoh7dvp.png');">
+                </div>
+
+                <!-- Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/70"></div>
+
+                <!-- Contenido -->
+                <div class="relative z-10 text-center px-8">
+
+                    <div class="w-20 h-20 bg-blue-500/10 rounded-full flex items-center justify-center mx-auto text-4xl text-blue-400 border border-blue-500/20 mb-5">
+                        🕶️
+                    </div>
+
+                    <span class="text-sm font-bold text-slate-100 tracking-[0.25em] uppercase block">
+                        Render Virtual Integrado
+                    </span>
+
+                    <p class="text-sm text-slate-300 mt-4 max-w-md leading-relaxed mx-auto">
+                        Explora el modelo tridimensional interactivo del entorno híbrido educativo propuesto para la modernización AV / IT.
+                    </p>
+
+                    <!-- Botón -->
+                    <a 
+                        href="https://floorplanner.com/projects/185519263/editor?token=eyJhbGciOiJFUzI1NiJ9.eyJhY3Rpb24iOiJtYW5hZ2UiLCJtb2RlbCI6IlByb2plY3QiLCJpZCI6MTg1NTE5MjYzLCJpYXQiOjE3Nzk4OTExMTksImV4cCI6MTc4MTEwMDcxOX0.s3qBxEMhX3njiMwa91CWT8XpYssxmhUzxEbWO0tN6mCD5jKRI4sxuElMInEJREWuRyDbgP2y30f39mQy6Dnn5Q"
+                        target="_blank"
+                        class="inline-flex items-center gap-3 mt-6 px-6 py-3 bg-slate-100 hover:bg-white text-slate-900 rounded-2xl text-sm font-bold transition shadow-xl"
+                    >
+                        🌐 Abrir Simulación 3D
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Instrucciones -->
+            <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6">
+
+                <h3 class="text-sm font-black uppercase tracking-[0.2em] text-slate-800 mb-5">
+                    Guía rápida de navegación
+                </h3>
+
+                <div class="space-y-5">
+
+                    <!-- Paso -->
+                    <div class="flex gap-4 items-start">
+                        <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-xs font-black text-slate-700 shrink-0">
+                            1
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-800">
+                                Esperar carga completa
+                            </h4>
+                            <p class="text-xs text-slate-500 leading-relaxed mt-1">
+                                Al abrir la plataforma, espera unos segundos mientras se cargan todos los elementos y el proyecto completo.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Paso -->
+                    <div class="flex gap-4 items-start">
+                        <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-xs font-black text-slate-700 shrink-0">
+                            2
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-800">
+                                Activar vista 3D
+                            </h4>
+                            <p class="text-xs text-slate-500 leading-relaxed mt-1">
+                                En la parte superior derecha encontrarás el botón 
+                                <span class="font-semibold text-slate-700">“3D”</span>.
+                                Presiónalo y espera nuevamente unos segundos mientras el entorno tridimensional termina de cargar.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Paso -->
+                    <div class="flex gap-4 items-start">
+                        <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-xs font-black text-slate-700 shrink-0">
+                            3
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-800">
+                                Recorrer el espacio
+                            </h4>
+                            <p class="text-xs text-slate-500 leading-relaxed mt-1">
+                                Utiliza las teclas 
+                                <span class="font-semibold text-slate-700">W A S D</span> 
+                                para desplazarte y el 
+                                <span class="font-semibold text-slate-700">click izquierdo del mouse</span> 
+                                para girar y explorar el entorno virtual.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Nota -->
+                <div class="mt-6 p-4 rounded-2xl bg-slate-100 border border-slate-200">
+                    <p class="text-[11px] text-slate-500 leading-relaxed">
+                        La simulación tiene fines demostrativos y conceptuales. La disposición final del espacio, equipos y mobiliario podrá ajustarse según requerimientos técnicos, disponibilidad y ejecución definitiva del proyecto.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    </div>  
+  </div>
+
+<!-- MODAL VIDEO TRANSFORMACIÓN -->
+<div id="video-modal"
+     class="fixed inset-0 z-[101] hidden items-center justify-center p-4 bg-black/90 backdrop-blur-md">
+
+  <div class="relative w-full max-w-6xl">
+
+    <button
+      onclick="closeTransformationVideo()"
+      class="absolute -top-14 right-0 text-white text-4xl hover:opacity-70">
+      ✕
+    </button>
+
+    <div class="rounded-3xl overflow-hidden bg-black shadow-2xl">
+
+      <video
+        id="transformationVideo"
+        controls
+        class="w-full max-h-[85vh]">
+
+        <source src="FOTOS/reder suave.mp4" type="video/mp4">
+
+      </video>
+
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+<!-- ══════════════════════════════════════════
+  5. EXPERIENCIA SENSORIAL (video placeholder)
+══════════════════════════════════════════ -->
+<section id="audio-exp" class="fs audio-premium">
+  <div class="max-w-6xl mx-auto px-6 w-full py-14">
+
+    <div class="grid lg:grid-cols-2 gap-14 items-center">
+      <div>
+        <div class="lblt mb-5 rv">Experiencia Sensorial</div>
+        <h2 class="serif text-4xl md:text-5xl font-light text-white leading-tight mb-6 rv" style="transition-delay:.1s">
+          Escuchemos<br><span style="color:var(--lt);font-style:italic">la diferencia.</span>
+        </h2>
+        <p class="rv mb-8" style="color:rgba(255,255,255,.45);font-size:15px;line-height:1.7;max-width:380px;transition-delay:.2s">
+          Lo que hoy se escucha plano, mañana se sentirá inmersivo. No se explica — se experimenta.
+        </p>
+        <div class="flex items-end gap-3 rv" style="transition-delay:.3s">
+          <div class="audio-vis">
+            <div class="av" style="height:30%"></div><div class="av" style="height:50%"></div>
+            <div class="av" style="height:80%"></div><div class="av" style="height:40%"></div>
+            <div class="av" style="height:90%"></div><div class="av" style="height:60%"></div>
+            <div class="av" style="height:70%"></div><div class="av" style="height:45%"></div>
+          </div>
+          <div>
+            <div class="text-white font-semibold text-sm">Sistema 7.2 · Envolvente</div>
+            <div style="color:rgba(255,255,255,.35);font-size:11px">360° de cobertura uniforme</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIDEO PLACEHOLDER -->
+      <div class="ap">
+        <div class="video-wrap" style="background:#000;border:1px solid rgba(255,255,255,.12)">
+          <!-- ═══════════════════════════════════════════════════════════
+               REEMPLAZAR con video real:
+               <video controls preload="metadata" poster="FOTOS/video_poster.jpg">
+                 <source src="VIDEO/demo_audio.mp4" type="video/mp4">
+               </video>
+               ═══════════════════════════════════════════════════════════ -->
+          <div class="rv-scale" style="transition-delay:.15s">
+        <div class="video-cinema" id="video-wrap">
+          <!-- JS inyecta el video o el placeholder según CONFIG.video.src -->
+        </div>
+        
+      </div>
+        </div>
+        <div class="mt-4 grid grid-cols-3 gap-3">
+          <div class="cn text-center p-3">
+            <div class="text-xl mb-1">▶</div><div class="text-white text-xs font-bold">Play / Pausa</div>
+            
+          </div>
+          <div class="cn text-center p-3">
+            <div class="text-xl mb-1">⏩</div><div class="text-white text-xs font-bold">Avanzar</div>
+            
+          </div>
+          <div class="cn text-center p-3">
+            <div class="text-xl mb-1">⛶</div><div class="text-white text-xs font-bold">Pantalla completa</div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+  6. ANTES VS PROPAL — COMPARACIÓN VISUAL
+══════════════════════════════════════════ -->
+<section id="compare" class="fs">
+  <div class="max-w-6xl mx-auto px-6 w-full py-14">
+
+    <div class="lblt mb-4 ap">Antes vs Propuesta</div>
+    <div class="grid lg:grid-cols-2 gap-6 items-end mb-10 ap">
+      <h2 class="serif text-3xl md:text-4xl font-bold text-white leading-tight">La diferencia<br><span style="color:var(--cb-lt)">es obvia.</span></h2>
+      <p class="text-white/55 text-sm leading-relaxed">Cada comparación refleja un impacto pedagógico, operativo e institucional concreto. Esta no es una decisión técnica — es una decisión sobre la experiencia que el Colegio Bolívar quiere ofrecer.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-6 ap">
+
+      <!-- AHORA -->
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <div style="width:12px;height:12px;border-radius:50%;background:#EF4444"></div>
+          <div class="text-white font-bold tracking-widest uppercase text-xs">Estado Actual</div>
+          <div class="metric-pill metric-bad ml-auto">Sin transformar</div>
+        </div>
+        <div class="cp-panel" style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.15)">
+          <div class="cp-row-now"><div style="font-size:18px;flex-shrink:0">🔇</div><div><div class="text-white/80 text-sm font-bold">Acústica</div><div class="text-white/45 text-xs mt-0.5">Sin tratamiento — eco y reverberación permanentes</div></div><div class="cp-badge-bad ml-auto">Crítico</div></div>
+          <div class="cp-row-now"><div style="font-size:18px;flex-shrink:0">🔊</div><div><div class="text-white/80 text-sm font-bold">Audio</div><div class="text-white/45 text-xs mt-0.5">Estéreo básico · cobertura desigual · sin subwoofer</div></div><div class="cp-badge-bad ml-auto flex-shrink-0">Limitado</div></div>
+          <div class="cp-row-now"><div style="font-size:18px;flex-shrink:0">📽️</div><div><div class="text-white/80 text-sm font-bold">Imagen</div><div class="text-white/45 text-xs mt-0.5">Proyector · requiere oscurecer · baja resolución</div></div><div class="cp-badge-bad ml-auto">Limitado</div></div>
+          <div class="cp-row-now"><div style="font-size:18px;flex-shrink:0">🌐</div><div><div class="text-white/80 text-sm font-bold">Videoconferencia</div><div class="text-white/45 text-xs mt-0.5">Inexistente — sin cámaras</div></div><div class="cp-badge-bad ml-auto">Crítico</div></div>
+          <div class="cp-row-now"><div style="font-size:18px;flex-shrink:0">⚙️</div><div><div class="text-white/80 text-sm font-bold">Automatización</div><div class="text-white/45 text-xs mt-0.5">Manual — Solo cuentan con 4 sistemas independientes</div></div><div class="cp-badge-bad ml-auto">Crítico</div></div>
+          <div class="cp-row-now"><div style="font-size:18px;flex-shrink:0">⏱</div><div><div class="text-white/80 text-sm font-bold">Setup de evento</div><div class="text-white/45 text-xs mt-0.5">10–20 minutos de intervención técnica previa</div></div><div class="metric-pill metric-bad ml-auto flex-shrink-0">30 min</div></div>
+        </div>
+      </div>
+
+      <!-- PROPAL -->
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <div style="width:12px;height:12px;border-radius:50%;background:#10B981"></div>
+          <div class="text-white font-bold tracking-widest uppercase text-xs">Propuesta PROPAL</div>
+          <div class="metric-pill metric-good ml-auto">Transformado</div>
+        </div>
+        <div class="cp-panel" style="background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.15)">
+          <div class="cp-row" style="background:transparent;border-color:rgba(16,185,129,.08)"><div style="font-size:18px;flex-shrink:0">🎵</div><div><div class="text-white/90 text-sm font-bold">Acústica profesional</div><div class="text-white/50 text-xs mt-0.5">Paneles absorbentes + difusores · RT60 óptimo para voz</div></div><div class="cp-badge-good ml-auto flex-shrink-0">Resuelto</div></div>
+          <div class="cp-row" style="background:transparent;border-color:rgba(16,185,129,.08)"><div style="font-size:18px;flex-shrink:0">🔊</div><div><div class="text-white/90 text-sm font-bold">Sonido 7.2 inmersivo</div><div class="text-white/50 text-xs mt-0.5">360° uniforme · 2 subwoofers · calibración DSP</div></div><div class="cp-badge-good ml-auto flex-shrink-0">Resuelto</div></div>
+          <div class="cp-row" style="background:transparent;border-color:rgba(16,185,129,.08)"><div style="font-size:18px;flex-shrink:0">🖥</div><div><div class="text-white/90 text-sm font-bold">LED COB 4K 136"</div><div class="text-white/50 text-xs mt-0.5">Brillo diurno · sin oscurecer · imagen profesional</div></div><div class="cp-badge-good ml-auto flex-shrink-0">Resuelto</div></div>
+          <div class="cp-row" style="background:transparent;border-color:rgba(16,185,129,.08)"><div style="font-size:18px;flex-shrink:0">📹</div><div><div class="text-white/90 text-sm font-bold">2× PTZ 4K · Seguimiento IA</div><div class="text-white/50 text-xs mt-0.5">MaxHub P30 · seguimiento automático · videoconf. global</div></div><div class="cp-badge-good ml-auto flex-shrink-0">Resuelto</div></div>
+          <div class="cp-row" style="background:transparent;border-color:rgba(16,185,129,.08)"><div style="font-size:18px;flex-shrink:0">⚡</div><div><div class="text-white/90 text-sm font-bold">QSC Q-SYS · 1 toque</div><div class="text-white/50 text-xs mt-0.5">Audio, video, luces, A/C y cámaras — un solo escenario</div></div><div class="cp-badge-good ml-auto flex-shrink-0">Resuelto</div></div>
+          <div class="cp-row" style="background:transparent;border-color:rgba(16,185,129,.08)"><div style="font-size:18px;flex-shrink:0">⚡</div><div><div class="text-white/90 text-sm font-bold">Setup de evento</div><div class="text-white/50 text-xs mt-0.5">Escena preconfigurada activa toda la sala automáticamente</div></div><div class="metric-pill metric-good ml-auto flex-shrink-0">&lt;2 min</div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Delta metrics bar -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 ap">
+      <div class="cn text-center p-4"><div class="serif text-2xl font-bold mb-1" style="color:var(--cb-lt)">-93%</div><div class="text-white/55 text-xs uppercase tracking-wider">Tiempo de preparación</div></div>
+      <div class="cn text-center p-4"><div class="serif text-2xl font-bold mb-1" style="color:var(--cb-lt)">+100%</div><div class="text-white/55 text-xs uppercase tracking-wider">Cobertura de audio</div></div>
+      <div class="cn text-center p-4"><div class="serif text-2xl font-bold mb-1" style="color:var(--cb-lt)">+∞</div><div class="text-white/55 text-xs uppercase tracking-wider">Capacidad híbrida</div></div>
+      <div class="cn text-center p-4"><div class="serif text-2xl font-bold mb-1" style="color:var(--cb-lt)">6→1</div><div class="text-white/55 text-xs uppercase tracking-wider">Sistemas unificados</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+  7. IMPACTO INSTITUCIONAL — 4 PILARES
+══════════════════════════════════════════ -->
+<section id="impact-pillars" class="fs" style="background:var(--off)">
+  <div class="max-w-6xl mx-auto px-6 w-full py-14">
+    <div class="lbl mb-4 ap">Más que tecnología</div>
+    <div class="grid lg:grid-cols-2 gap-8 items-end mb-12 ap">
+      <h2 class="serif text-3xl md:text-4xl font-bold leading-tight" style="color:var(--cb-navy)">El Colegio Bolívar no compra equipos.<br><span style="color:var(--cb-blue)">Invierte en su futuro.</span></h2>
+      <p class="text-sm leading-relaxed" style="color:var(--muted)">Cuatro dimensiones estratégicas que transforman la percepción institucional, la experiencia educativa y la posición del colegio.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 ap">
+
+      <div class="pillar" style="background:linear-gradient(145deg,#EBF2F9,#DCEEFA)">
+        <div class="pil-icon" style="background:rgba(0,78,150,.12)"><span>🎓</span></div>
+        <div class="font-bold text-base mb-3" style="color:var(--cb-navy)">Excelencia Académica</div>
+        <div class="space-y-2 text-xs" style="color:var(--muted)">
+          <div class="flex gap-2 items-start"><span style="color:var(--cb-blue);flex-shrink:0">→</span><span>Clases con expertos internacionales en tiempo real</span></div>
+          <div class="flex gap-2 items-start"><span style="color:var(--cb-blue);flex-shrink:0">→</span><span>Ambientes inmersivos que elevan la retención</span></div>
+          <div class="flex gap-2 items-start"><span style="color:var(--cb-blue);flex-shrink:0">→</span><span>El mayor estándar pedagógico del Valle del Cauca</span></div>
+        </div>
+      </div>
+
+      <div class="pillar" style="background:linear-gradient(145deg,#EFF7F0,#D9F0DC)">
+        <div class="pil-icon" style="background:rgba(16,185,129,.12)"><span>🌎</span></div>
+        <div class="font-bold text-base mb-3" style="color:var(--cb-navy)">Conexión Global</div>
+        <div class="space-y-2 text-xs" style="color:var(--muted)">
+          <div class="flex gap-2 items-start"><span style="color:#059669;flex-shrink:0">→</span><span>Hub de videoconferencia institucional</span></div>
+          <div class="flex gap-2 items-start"><span style="color:#059669;flex-shrink:0">→</span><span>Acceso a redes y conferencias internacionales</span></div>
+          <div class="flex gap-2 items-start"><span style="color:#059669;flex-shrink:0">→</span><span>El colegio conectado con el mundo académico</span></div>
+        </div>
+      </div>
+
+      <div class="pillar" style="background:linear-gradient(145deg,#FFF8ED,#FAECD4)">
+        <div class="pil-icon" style="background:rgba(217,119,6,.1)"><span>🏆</span></div>
+        <div class="font-bold text-base mb-3" style="color:var(--cb-navy)">Prestigio Institucional</div>
+        <div class="space-y-2 text-xs" style="color:var(--muted)">
+          <div class="flex gap-2 items-start"><span style="color:#D97706;flex-shrink:0">→</span><span>Diferenciación en admisiones</span></div>
+          <div class="flex gap-2 items-start"><span style="color:#D97706;flex-shrink:0">→</span><span>Espacio alquilable para eventos externos</span></div>
+          <div class="flex gap-2 items-start"><span style="color:#D97706;flex-shrink:0">→</span><span>Referente tecnológico en Cali y el Valle</span></div>
+        </div>
+      </div>
+
+      <div class="pillar" style="background:linear-gradient(145deg,#F3F0FF,#E8E2F8)">
+        <div class="pil-icon" style="background:rgba(124,58,237,.1)"><span>🚀</span></div>
+        <div class="font-bold text-base mb-3" style="color:var(--cb-navy)">Escalabilidad a Futuro</div>
+        <div class="space-y-2 text-xs" style="color:var(--muted)">
+          <div class="flex gap-2 items-start"><span style="color:#7C3AED;flex-shrink:0">→</span><span>Plataforma QSC expandible sin reemplazar infraestructura</span></div>
+          <div class="flex gap-2 items-start"><span style="color:#7C3AED;flex-shrink:0">→</span><span>Lista para IA y realidad extendida</span></div>
+          <div class="flex gap-2 items-start"><span style="color:#7C3AED;flex-shrink:0">→</span><span>8+ años de vida útil garantizad</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+  8. DASHBOARD EJECUTIVO — POWER BI STYLE
+══════════════════════════════════════════ -->
+<section id="dashboard" class="fs-auto" style="background:var(--off)">
+  <div class="max-w-6xl mx-auto px-6 w-full">
+    <div class="lbl mb-4 ap">Dashboard Ejecutivo · KPIs del Proyecto</div>
+    <div class="grid lg:grid-cols-2 gap-8 items-end mb-10 ap">
+      <h2 class="serif text-3xl md:text-4xl font-bold leading-tight" style="color:var(--cb-navy)">El proyecto en números.<br><span style="color:var(--cb-blue)">Datos para decisiones.</span></h2>
+      <p class="text-sm leading-relaxed" style="color:var(--muted)">Un resumen ejecutivo cuantificable del alcance, la inversión y el impacto del proyecto. Diseñado para facilitar la toma de decisiones de la Junta Directiva.</p>
+    </div>
+
+    <!-- KPI cards row 1 -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6 ap">
+      <div class="kc text-center">
+        <div class="knum">$265M</div>
+        <div class="text-xs font-bold mt-2 mb-1" style="color:var(--muted)">Inversión Total</div>
+        <div class="text-xs" style="color:var(--cb-blue)">COP Estimado</div>
+        <div class="kbar mt-2"><div class="kfill" style="--w:1"></div></div>
+      </div>
+      <div class="kc text-center">
+        <div class="knum">16</div>
+        <div class="text-xs font-bold mt-2 mb-1" style="color:var(--muted)">Semanas</div>
+        <div class="text-xs" style="color:var(--cb-blue)">Duración Estimada</div>
+        <div class="kbar mt-2"><div class="kfill" style="--w:.65"></div></div>
+      </div>
+      <div class="kc text-center">
+        <div class="knum">1.3K</div>
+        <div class="text-xs font-bold mt-2 mb-1" style="color:var(--muted)">Estudiantes</div>
+        <div class="text-xs" style="color:var(--cb-blue)">Usuarios Impactados</div>
+        <div class="kbar mt-2"><div class="kfill" style="--w:.9"></div></div>
+      </div>
+      <div class="kc text-center">
+        <div class="knum">6</div>
+        <div class="text-xs font-bold mt-2 mb-1" style="color:var(--muted)">Sistemas</div>
+        <div class="text-xs" style="color:var(--cb-blue)">Integrados en QSC</div>
+        <div class="kbar mt-2"><div class="kfill" style="--w:.6"></div></div>
+      </div>
+      <div class="kc text-center">
+        <div class="knum">99%</div>
+        <div class="text-xs font-bold mt-2 mb-1" style="color:var(--muted)">Disponibilidad</div>
+        <div class="text-xs" style="color:var(--cb-blue)">Operativa proyectada</div>
+        <div class="kbar mt-2"><div class="kfill" style="--w:.99"></div></div>
+      </div>
+      <div class="kc text-center">
+        <div class="knum">100%</div>
+        <div class="text-xs font-bold mt-2 mb-1" style="color:var(--muted)">Automatización</div>
+        <div class="text-xs" style="color:var(--cb-blue)">Nivel alcanzado</div>
+        <div class="kbar mt-2"><div class="kfill" style="--w:1"></div></div>
+      </div>
+    </div>
+
+    <!-- Charts row -->
+    <div class="grid lg:grid-cols-3 gap-6 mb-6 ap">
+
+      <!-- Donut budget -->
+      <div class="chart-card">
+        <div class="text-xs font-bold uppercase tracking-wider mb-4" style="color:var(--muted)">Distribución Presupuestal</div>
+        <div class="relative flex items-center justify-center mb-4" style="height:180px">
+          <canvas id="donutChart" width="180" height="180"></canvas>
+          <div class="absolute text-center pointer-events-none">
+            <div class="serif text-xl font-bold" style="color:var(--cb-blue)">$265M</div>
+            <div class="text-xs" style="color:var(--muted)">Total COP</div>
+          </div>
+        </div>
+        <div id="donut-legend" class="space-y-1.5"></div>
+      </div>
+
+      <!-- Bar chart por fase -->
+      <div class="chart-card">
+        <div class="text-xs font-bold uppercase tracking-wider mb-4" style="color:var(--muted)">Inversión por Componente</div>
+        <canvas id="barChart" height="200"></canvas>
+      </div>
+
+      <!-- Gauge dashboard -->
+      <div class="chart-card">
+        <div class="text-xs font-bold uppercase tracking-wider mb-4" style="color:var(--muted)">Indicadores de Calidad</div>
+        <div class="grid grid-cols-2 gap-4" id="gauges-container"></div>
+      </div>
+
+    </div>
+
+    <!-- Metrics radar -->
+    <div class="grid lg:grid-cols-2 gap-6 ap">
+      <div class="chart-card">
+        <div class="text-xs font-bold uppercase tracking-wider mb-4" style="color:var(--muted)">Perfil de Capacidades · Antes vs Después</div>
+        <canvas id="radarChart" height="260"></canvas>
+      </div>
+      <div class="chart-card flex flex-col justify-between">
+        <div>
+          <div class="text-xs font-bold uppercase tracking-wider mb-5" style="color:var(--muted)">Impacto por Dimensión</div>
+          <div class="space-y-4" id="impact-bars"></div>
+        </div>
+        <div class="mt-6 pt-5 border-t" style="border-color:var(--border)">
+          <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color:var(--muted)">Leyenda</div>
+          <div class="flex gap-5">
+            <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-sm" style="background:#DC2626"></div><span class="text-xs" style="color:var(--muted)">Estado actual</span></div>
+            <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-sm" style="background:var(--cb-blue)"></div><span class="text-xs" style="color:var(--muted)">Propuesta PROPAL</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+  9. CONTROL QSC + RACK
+══════════════════════════════════════════ -->
+<section id="control" class="fs" style="background:var(--cb-navy)">
+  <div class="max-w-6xl mx-auto px-6 w-full py-14">
+    <div class="lblt mb-4 ap">Automatización QSC · Sala de Control · La Infraestructura que lo Hace Posible</div>
+    <div class="grid lg:grid-cols-2 gap-8 items-end mb-12 ap">
+      <h2 class="serif text-3xl md:text-4xl font-bold text-white leading-tight">Un toque.<br><span style="color:var(--cb-lt)">Todo el auditorio,<br>listo en segundos.</span></h2>
+      <p class="text-white/55 text-sm leading-relaxed">La plataforma QSC Q-SYS integra en un solo procesador el control de todos los sistemas. Los escenarios preconfigurados eliminan la complejidad para docentes, coordinadores y directivos. La tecnología se vuelve invisible — solo queda la experiencia.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-8">
+      <!-- Scenes simulator -->
+      <div class="rounded-2xl overflow-hidden ap" style="background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.09)">
+        <div class="p-6 md:p-8">
+          <h4 class="font-bold text-white mb-1">Simulador de Escenas QSC</h4>
+          <p class="text-white/40 text-xs mb-6">Selecciona un escenario y observa cómo reacciona el sistema.</p>
+          <div class="flex flex-wrap gap-2 mb-6" id="scene-btns"></div>
+          <div id="scene-detail" class="rounded-xl p-5 min-h-[148px]" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07)"></div>
+          <div class="mt-5 pt-5 border-t border-white/10 grid grid-cols-3 gap-2">
+            <div class="text-center"><div class="text-xl mb-1">💡</div><div class="text-white text-xs font-bold">Luces</div></div>
+            <div class="text-center"><div class="text-xl mb-1">🔊</div><div class="text-white text-xs font-bold">Audio 7.2</div></div>
+            <div class="text-center"><div class="text-xl mb-1">📹</div><div class="text-white text-xs font-bold">Cámaras</div></div>
+            <div class="text-center"><div class="text-xl mb-1">🖥</div><div class="text-white text-xs font-bold">Pantallas</div></div>
+            <div class="text-center"><div class="text-xl mb-1">❄️</div><div class="text-white text-xs font-bold">A/C</div></div>
+            <div class="text-center"><div class="text-xl mb-1">🎙</div><div class="text-white text-xs font-bold">Micrófonos</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rack + botoneras -->
+      <div class="ap">
+        <h4 class="font-bold text-white mb-1">Rack Centralizado · Sala de Control</h4>
+        <p class="text-white/45 text-xs mb-4">Cuarto técnico compacto (~6–9 m²) con rack, puesto de operador y acceso directo al auditorio.</p>
+        <div class="rounded-2xl p-2 mb-5" style="background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.08)">
+          <div class="rounded-xl p-4 space-y-1.5" style="background:rgba(0,0,0,.2)">
+            <div class="text-center text-xs font-bold tracking-widest uppercase pb-3 mb-1 border-b border-white/8" style="color:var(--cb-lt)">RACK · SALA DE CONTROL</div>
+            <div class="ru"><div class="d8" style="background:#4ADE80"></div><div><div class="font-bold text-xs">QSC Q-SYS Core</div><div style="color:rgba(255,255,255,.3);font-size:10px">Procesador central de automatización</div></div></div>
+            <div class="ru"><div class="d8" style="background:#4ADE80"></div><div><div class="font-bold text-xs">QSC Amplificadores</div><div style="color:rgba(255,255,255,.3);font-size:10px">Amplificación sistema 7.2</div></div></div>
+            <div class="ru"><div class="d8" style="background:#60A5FA"></div><div><div class="font-bold text-xs">Switch PoE Gestionado</div><div style="color:rgba(255,255,255,.3);font-size:10px">Red para cámaras PTZ y dispositivos AV</div></div></div>
+            <div class="ru"><div class="d8" style="background:#FBBF24"></div><div><div class="font-bold text-xs">Controlador Luces DMX</div><div style="color:rgba(255,255,255,.3);font-size:10px">Escenas de iluminación integradas</div></div></div>
+            <div class="ru"><div class="d8" style="background:#FBBF24"></div><div><div class="font-bold text-xs">Módulo Aire Acondicionado</div><div style="color:rgba(255,255,255,.3);font-size:10px">Control de temperatura por escena</div></div></div>
+            <div class="ru"><div class="d8" style="background:#F87171"></div><div><div class="font-bold text-xs">Receptor Micrófonos Inalámbricos</div><div style="color:rgba(255,255,255,.3);font-size:10px">Gestión de canales y frecuencias</div></div></div>
+            <div class="ru"><div class="d8" style="background:#C084FC"></div><div><div class="font-bold text-xs">Encoder IP / Grabadora</div><div style="color:rgba(255,255,255,.3);font-size:10px">Captura y streaming de sesiones</div></div></div>
+            <div class="ru"><div class="d8" style="background:#94A3B8"></div><div><div class="font-bold text-xs">UPS · Protección Eléctrica</div><div style="color:rgba(255,255,255,.3);font-size:10px">Respaldo ante cortes de energía</div></div></div>
+          </div>
+        </div>
+        <!-- Interfaz Tablet QSC -->
+        <div class="cw p-3">
+          <div class="rounded-xl overflow-hidden mb-3 cursor-pointer"
+              style="height:260px;background:rgba(0,0,0,.06);border:1px solid rgba(0,0,0,.08)"
+              onclick="openQSCImage()">
+
+            <img
+              src="FOTOS/MAX INTERFAZ UI CB 2026.png"
+              alt="Interfaz de control QSC"
+              class="w-full h-full object-cover transition duration-300 hover:scale-105">
+          </div>
+
+          <div class="text-center">
+            <div class="font-bold text-sm mb-1" style="color:var(--cb-navy)">
+              Interfaz Táctil QSC
+            </div>
+            <div class="text-xs" style="color:var(--muted)">
+              Desde una única tablet se controlan iluminación, audio, cámaras PTZ,
+              pantallas, climatización y modos de operación del auditorio.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+  10. ECOSISTEMA TECNOLÓGICO
+══════════════════════════════════════════ -->
+<section id="tecnologia" class="fs-auto" style="background:white">
+  <div class="max-w-6xl mx-auto px-6 w-full">
+    <div class="lbl mb-4 ap">Ecosistema Tecnológico · La Infraestructura que Hace Posible la Experiencia</div>
+    <div class="grid lg:grid-cols-2 gap-8 items-end mb-10 ap">
+      <h2 class="serif text-3xl md:text-4xl font-bold leading-tight" style="color:var(--cb-navy)">Tecnología seleccionada<br>para resolver cada brecha.</h2>
+      <p class="text-sm leading-relaxed" style="color:var(--muted)">Cada componente fue elegido por su confiabilidad comprobada en instalaciones AV profesionales educativas. No se trata de especificaciones — se trata de la solución correcta para cada problema identificado.</p>
+    </div>
+    <div class="flex flex-wrap gap-2 mb-8 ap" id="tf-container"></div>
+    <div id="tech-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 ap"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+  11. ROADMAP — MICROSOFT PROJECT STYLE
+══════════════════════════════════════════ -->
+<section id="roadmap" class="fs">
+  <div class="max-w-6xl mx-auto px-6 w-full py-14">
+    <div class="lblt mb-4 ap">Roadmap de Implementación · Plan de Ejecución Estructurado</div>
+    <div class="grid lg:grid-cols-2 gap-8 items-end mb-12 ap">
+      <h2 class="serif text-3xl md:text-4xl font-bold text-white leading-tight">Plan de obra que<br><span style="color:var(--cb-lt)">respeta el año lectivo.</span></h2>
+      <p class="text-white/55 text-sm leading-relaxed">4 fases, ~16 semanas, priorizando vacaciones y minimizando el impacto en la operación académica. Cada fase tiene entregables concretos, hitos definidos y dependencias claras.</p>
+    </div>
+
+    <!-- Timeline visual -->
+    <div class="relative pl-16 space-y-6 ap" id="timeline-container">
+      <div class="tm-line"></div>
+      <!-- populated by JS -->
+    </div>
+
+    <!-- Gantt reference strip -->
+    <div class="mt-10 ap">
+      <div class="text-xs font-bold uppercase tracking-wider text-white/40 mb-3">Vista de Gantt Referencial · 16 semanas</div>
+      <div class="grid grid-cols-16 gap-0.5 relative" id="gantt-strip" style="grid-template-columns:repeat(16,1fr)">
+        <!-- populated by JS -->
+      </div>
+      <div class="flex justify-between text-xs text-white/30 mt-1">
+        <span>Sem 1</span><span>Sem 4</span><span>Sem 8</span><span>Sem 12</span><span>Sem 16</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+  12. INVERSIÓN
+══════════════════════════════════════════ -->
+<section id="inversion" class="fs-auto" style="background:white">
+  <div class="max-w-6xl mx-auto px-6 w-full">
+    <div class="lbl mb-4 ap">Inversión Estimada · Business Case Financiero</div>
+    <div class="grid lg:grid-cols-2 gap-8 items-end mb-5 ap">
+      <h2 class="serif text-3xl md:text-4xl font-bold leading-tight" style="color:var(--cb-navy)">Inversión clara, trazable<br>y pendiente de validación.</h2>
+      <p class="text-sm leading-relaxed" style="color:var(--muted)">Estimados referenciales basados en precios de distribuidores AV colombianos. <strong>El paso siguiente es validar con proveedores certificados para obtener cotizaciones formales.</strong></p>
+    </div>
+    <div class="badge-warn mb-6 ap">⚠️ Valores estimados referenciales — Requieren cotización formal con proveedores AV certificados en Colombia</div>
+
+    <div class="flex flex-wrap gap-2 mb-6 ap" id="bf-container"></div>
+
+    <div class="rounded-2xl overflow-hidden border mb-8 ap" style="border-color:var(--border)">
+      <table class="w-full text-sm">
+        <thead>
+          <tr style="background:var(--cb-navy)">
+            <th class="text-left py-3.5 px-5 text-white text-xs uppercase tracking-wider font-bold">Componente</th>
+            <th class="text-left py-3 px-4 text-white text-xs uppercase tracking-wider font-bold hidden sm:table-cell">Área</th>
+            <th class="text-center py-3 px-4 text-white text-xs uppercase tracking-wider font-bold">Cant.</th>
+            <th class="text-right py-3 px-5 text-white text-xs uppercase tracking-wider font-bold">Est. COP</th>
+          </tr>
+        </thead>
+        <tbody id="budget-body" class="divide-y" style="border-color:var(--border)"></tbody>
+        <tfoot><tr style="background:var(--cb-xl)">
+          <td colspan="3" class="py-4 px-5 font-bold text-base" style="color:var(--cb-navy)">Total Estimado del Proyecto</td>
+          <td class="py-4 px-5 text-right font-black text-lg serif" style="color:var(--cb-blue)" id="budget-total">$0</td>
+        </tr></tfoot>
+      </table>
+    </div>
+
+        <!-- RESUMEN POR FASES -->
+<div class="ap mb-8">
+
+  <h3 class="font-bold text-lg mb-4" style="color:var(--cb-navy)">
+    Consolidado por Fases de Implementación
+  </h3>
+
+  <div class="rounded-2xl overflow-hidden border" style="border-color:var(--border)">
+    <table class="w-full text-sm">
+
+      <thead>
+        <tr style="background:var(--cb-xl)">
+          <th class="text-left py-3 px-5 font-bold">Fase</th>
+          <th class="text-left py-3 px-5 font-bold">Descripción</th>
+          <th class="text-right py-3 px-5 font-bold">Valor Estimado</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr>
+          <td class="py-4 px-5">
+            <span class="font-semibold" style="color:#1D4ED8">
+              ● Necesidad Inmediata
+            </span>
+          </td>
+          <td class="py-4 px-5" style="color:var(--muted)">
+            Operación esencial del sistema
+          </td>
+          <td class="py-4 px-5 text-right font-bold" id="total-necesidad">
+            $77.000.000
+          </td>
+        </tr>
+
+        <tr>
+          <td class="py-4 px-5">
+            <span class="font-semibold" style="color:#6B7280">
+              ● Fortalecimiento
+            </span>
+          </td>
+          <td class="py-4 px-5" style="color:var(--muted)">
+            Optimización y mejora operativa
+          </td>
+          <td class="py-4 px-5 text-right font-bold" id="total-fortalecimiento">
+            $67.000.000
+          </td>
+        </tr>
+
+        <tr>
+          <td class="py-4 px-5">
+            <span class="font-semibold" style="color:#15803D">
+              ● Desarrollo Futuro
+            </span>
+          </td>
+          <td class="py-4 px-5" style="color:var(--muted)">
+            Expansión y crecimiento futuro
+          </td>
+          <td class="py-4 px-5 text-right font-bold" id="total-desarrollo">
+            $109.000.000
+          </td>
+        </tr>
+
+      </tbody>
+
+    </table>
+  </div>
+
+</div>
+
+
+    <div class="grid md:grid-cols-2 gap-6 ap">
+      <div class="cw">
+        <h4 class="font-bold text-base mb-4 flex items-center gap-2" style="color:var(--cb-navy)"><span style="color:var(--cb-blue)">📋</span>Incluir en la propuesta</h4>
+        <div class="space-y-2 text-sm" style="color:var(--muted)">
+          <div class="flex gap-2"><span style="color:#16A34A">✓</span>Instalación, calibración y puesta en marcha 100% del hardware</div>
+          <div class="flex gap-2"><span style="color:#16A34A">✓</span>Programación completa de escenas QSC y automatización personalizada</div>
+          <div class="flex gap-2"><span style="color:#16A34A">✓</span>4 jornadas de capacitación docente y técnica</div>
+          <div class="flex gap-2"><span style="color:#16A34A">✓</span>Soporte con visitas trimestrales por 2 años</div>
+          <div class="flex gap-2"><span style="color:#16A34A">✓</span>Documentación técnica completa del sistema</div>
+        </div>
+      </div>
+      <div class="rounded-2xl p-6" style="background:var(--cb-navy)">
+        <h4 class="font-bold text-base mb-3 text-white">Próximos Pasos · Plan de Acción</h4>
+        <p class="text-white/50 text-sm leading-relaxed mb-5">Esta propuesta establece las bases. El siguiente paso inmediato es validarla con proveedores AV certificados en Colombia.</p>
+        <div class="space-y-2">
+          <div class="flex items-center gap-3 text-sm text-white/70"><span class="w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center flex-shrink-0" style="background:var(--cb-blue)">1</span>Compartir con proveedores AV especializados</div>
+          <div class="flex items-center gap-3 text-sm text-white/70"><span class="w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center flex-shrink-0" style="background:var(--cb-blue)">2</span>Obtener mínimo 3 cotizaciones formales</div>
+          <div class="flex items-center gap-3 text-sm text-white/70"><span class="w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center flex-shrink-0" style="background:var(--cb-blue)">3</span>Comparar, seleccionar y aprobar</div>
+          <div class="flex items-center gap-3 text-sm text-white/70"><span class="w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center flex-shrink-0" style="background:var(--cb-blue)">4</span>Iniciar la ejecución del proyecto</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+  13. RETORNO DE VALOR INSTITUCIONAL
+══════════════════════════════════════════ -->
+<section id="valor" class="fs" style="background:var(--cb-navy)">
+  <div class="max-w-6xl mx-auto px-6 w-full py-14">
+    <div class="lblt mb-4 ap">Retorno de Valor · No ROI financiero. Impacto institucional.</div>
+    <div class="grid lg:grid-cols-2 gap-8 items-end mb-12 ap">
+      <h2 class="serif text-3xl md:text-4xl font-bold text-white leading-tight">Una inversión que<br><span style="color:var(--cb-lt)">el Colegio Bolívar<br>sentirá por décadas.</span></h2>
+      <p class="text-white/55 text-sm leading-relaxed">El valor de este proyecto no se mide en porcentajes de retorno financiero. Se mide en la calidad de vida académica de 1.300 estudiantes, en la percepción de cientos de familias y en la posición del colegio frente al futuro de la educación.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 ap">
+      <div class="vi-card">
+        <div class="text-2xl mb-4">🏫</div>
+        <h4 class="font-bold text-white mb-3">Prestigio Institucional</h4>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">Un auditorio de esta categoría posiciona al Colegio Bolívar como la institución tecnológicamente más avanzada en Cali y el Valle del Cauca.</p>
+        <div class="text-xs font-bold uppercase tracking-wider" style="color:var(--cb-lt)">Diferenciación competitiva en admisiones →</div>
+      </div>
+      <div class="vi-card">
+        <div class="text-2xl mb-4">🎓</div>
+        <h4 class="font-bold text-white mb-3">Innovación Académica</h4>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">Habilita modelos de aprendizaje que hoy no son posibles: clases invertidas con expertos globales, debates internacionales y experiencias inmersivas de aprendizaje.</p>
+        <div class="text-xs font-bold uppercase tracking-wider" style="color:var(--cb-lt)">Nueva dimensión pedagógica →</div>
+      </div>
+      <div class="vi-card">
+        <div class="text-2xl mb-4">🌍</div>
+        <h4 class="font-bold text-white mb-3">Conectividad Global</h4>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">El auditorio se convierte en el punto de conexión del colegio con el mundo académico internacional: universidades, conferencias y alianzas estratégicas.</p>
+        <div class="text-xs font-bold uppercase tracking-wider" style="color:var(--cb-lt)">Red académica sin fronteras →</div>
+      </div>
+      <div class="vi-card">
+        <div class="text-2xl mb-4">👨‍👩‍👧</div>
+        <h4 class="font-bold text-white mb-3">Experiencia de Familias</h4>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">Graduaciones, presentaciones y eventos que las familias vivirán con una calidad de producción que reforzará su confianza y orgullo en la institución.</p>
+        <div class="text-xs font-bold uppercase tracking-wider" style="color:var(--cb-lt)">Percepción y fidelización →</div>
+      </div>
+      <div class="vi-card">
+        <div class="text-2xl mb-4">⚡</div>
+        <h4 class="font-bold text-white mb-3">Eficiencia Operativa</h4>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">Reducción del 80% en intervenciones técnicas, setup de eventos en menos de 2 minutos y operación autónoma que libera al equipo docente para enseñar.</p>
+        <div class="text-xs font-bold uppercase tracking-wider" style="color:var(--cb-lt)">Tiempo y recursos recuperados →</div>
+      </div>
+      <div class="vi-card">
+        <div class="text-2xl mb-4">🚀</div>
+        <h4 class="font-bold text-white mb-3">Preparación para el Futuro</h4>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">Infraestructura escalable lista para IA generativa, realidad extendida y los formatos educativos que aún no existen. 8+ años de vida útil garantizada.</p>
+        <div class="text-xs font-bold uppercase tracking-wider" style="color:var(--cb-lt)">Inversión vigente por décadas →</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+  14. LIDERAZGO
+══════════════════════════════════════════ -->
+<section id="liderazgo" class="fs-auto py-20" style="background:var(--cb-dark)">
+  <div class="max-w-4xl mx-auto px-6 w-full">
+    <div class="lblt mb-8 ap">Audiovisual & Technology Lead</div>
+    <div class="grid md:grid-cols-[180px_1fr] gap-12 items-center ap">
+      <img src="FOTOS/FOTO PORTADAS_4.jpg" alt="Camilo Acevedo" class="w-36 h-36 object-cover rounded-full border-2 shadow-2xl mx-auto md:mx-0" style="border-color:var(--cb-lt)" onerror="this.src='https://placehold.co/144x144/004E96/D5E0EB?text=CA'">
+      <div>
+    <h3 class="serif text-2xl font-bold text-white mb-1">
+        Camilo Acevedo
+    </h3>
+
+    <p class="text-sm mb-5 font-medium tracking-wide"
+       style="color:var(--cb-lt)">
+        Producción Audiovisual · Streaming · Eventos Institucionales · Integración AV/IT · Transformación Digital
+    </p>
+
+    <div class="space-y-4 max-w-2xl">
+
+        <p class="text-white/65 text-sm leading-relaxed">
+            Profesional con experiencia en liderazgo de áreas audiovisuales y tecnológicas, responsable de la producción de contenido institucional, transmisiones en vivo, soporte a eventos de gran formato, operación de sistemas audiovisuales profesionales y modernización de espacios educativos.
+        </p>
+
+        <p class="text-white/65 text-sm leading-relaxed">
+            Mi perfil integra capacidades técnicas y estratégicas en producción multimedia, sistemas de audio e iluminación, videoconferencia, automatización, plataformas Microsoft 365, soluciones de Inteligencia Artificial y gestión de proyectos tecnológicos. Mi objetivo es desarrollar experiencias audiovisuales innovadoras que fortalezcan la comunicación, el aprendizaje y la proyección institucional.
+        </p>
+
+        <!-- Frase destacada -->
+        <div class="pt-2 border-l-2 pl-4"
+             style="border-color:var(--cb-lt)">
+            <p class="italic text-sm"
+               style="color:var(--cb-lt)">
+                "Conecto tecnología, contenido y experiencia para transformar espacios educativos en entornos de comunicación e innovación."
+            </p>
+        </div>
+
+    </div>
+
+    <a href="https://linkedin.com/in/camiloacevedoor"
+       target="_blank"
+       class="inline-block mt-6 px-5 py-2.5 rounded-xl text-sm font-bold transition-all hover:scale-105"
+       style="background:rgba(213,224,235,.1);color:var(--cb-lt);border:1px solid rgba(213,224,235,.18)">
+        LinkedIn →
+    </a>
+</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-8 px-6 border-t" style="background:#000D1C;border-color:rgba(213,224,235,.08)">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-5">
+    <div class="flex items-center gap-4">
+      <div class="bg-white py-2 px-4 rounded-xl"><img src="FOTOS/CBlogoHorizontalIngles.png" alt="Colegio Bolívar" class="h-9 object-contain" onerror="this.src='https://placehold.co/180x36/ffffff/004e96?text=Colegio+Bolivar'"></div>
+      <span class="text-xs hidden sm:block" style="color:rgba(213,224,235,.3);letter-spacing:.12em;text-transform:uppercase">Auditorio Propal · Propuesta 2026</span>
+    </div>
+    <p class="text-xs text-center md:text-right" style="color:rgba(255,255,255,.2)">© 2026 Colegio Bolívar · Departamento de Tecnología y Audiovisuales<br>Elaborado por Camilo Acevedo · Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" style="position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.95);backdrop-filter:blur(20px);display:none;align-items:center;justify-content:center;padding:20px" onclick="if(event.target===this)closeLB()">
+  <div style="max-width:1000px;width:100%;position:relative">
+    <button onclick="closeLB()" style="position:absolute;top:-40px;right:0;color:rgba(255,255,255,.5);background:none;border:none;cursor:pointer;font-size:14px">✕ Cerrar</button>
+    <div id="lb-content" style="border-radius:16px;overflow:hidden;background:#000"></div>
+  </div>
+</div>
+
+<!-- TECH MODAL -->
+<div id="modal-overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <button onclick="closeModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full flex items-center justify-center font-bold" style="background:var(--cb-xl);color:var(--cb-navy)">✕</button>
+    <div id="m-icon" class="text-4xl mb-4"></div>
+    <div id="m-badge" class="text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider inline-block mb-3" style="background:var(--cb-xl);color:var(--cb-blue)"></div>
+    <h2 id="m-title" class="serif text-2xl font-bold mb-2" style="color:var(--cb-navy)"></h2>
+    <p id="m-brand" class="text-sm font-bold mb-4" style="color:var(--muted)"></p>
+    <p id="m-desc" class="text-sm leading-relaxed mb-6" style="color:var(--muted)"></p>
+    <div id="m-specs" class="grid grid-cols-2 gap-3 mb-5"></div>
+    <div id="m-reason" class="text-sm p-4 rounded-xl" style="background:var(--cb-xl);color:var(--cb-navy)"></div>
+  </div>
+</div>
+
+<!-- Modal Imagen QSC -->
+<div id="qscModal"
+     class="fixed inset-0 z-[9999] hidden items-center justify-center"
+     style="background:rgba(0,0,0,.92)">
+
+  <!-- Botón cerrar -->
+  <button onclick="closeQSCImage()"
+          class="absolute top-6 right-8 text-white text-5xl leading-none hover:opacity-70">
+    &times;
+  </button>
+
+  <!-- Imagen -->
+  <img
+    src="FOTOS/MAX INTERFAZ UI CB 2026.png"
+    alt="Interfaz QSC"
+    class="max-w-[95vw] max-h-[90vh] rounded-xl shadow-2xl">
+
+</div>
+
+<script>
+
+
+/* ── PROBLEMAS ── */
+const PROBLEMAS = [
+  { num:"01", icon:"🔇", titulo:"Sin acondicionamiento acústico",    gravedad:"Crítico",    color:"#EF4444" },
+  { num:"02", icon:"🔊", titulo:"Sonido estéreo sin cobertura",      gravedad:"Alto",       color:"#F97316" },
+  { num:"03", icon:"📽️", titulo:"Proyector limitado",                gravedad:"Medio",       color:"#F97316" },
+  { num:"04", icon:"🌐", titulo:"Sin videoconferencia profesional",  gravedad:"Crítico",    color:"#EF4444" },
+  { num:"05", icon:"⚙️", titulo:"Sin automatización central",        gravedad:"Crítico",    color:"#EF4444" },
+  { num:"06", icon:"🏠", titulo:"Sin sala de control técnico",       gravedad:"Estructural",color:"#6B7280" },
+];
+/* ══════════════════════════════════
+   DATA
+══════════════════════════════════ */
+const techData=[
+  {id:'acustica',icon:'🎵',cat:'acustica',badge:'Base Fundamental',title:'Tratamiento Acústico Profesional',brand:'Paneles absorbentes + difusores · RT60 óptimo',desc:'El tratamiento acústico es el primer paso. Paneles de fibra acústica en paredes y techo, más difusores de madera en pared posterior. Elimina el eco y controla la reverberación para inteligibilidad de voz perfecta.',specs:[['Materiales','Fibra acústica + MDF ranurado'],['RT60 objetivo','0.6–0.8s (óptimo para voz)'],['Cobertura','Paredes + techo + pared posterior'],['Beneficio','Cero eco — voz clara en toda la sala'],['Diseño','Medición acústica profesional previa'],['Integración','Base para todo el sistema de audio']],reason:'Sin tratamiento acústico, ningún sistema de audio funciona bien. Es el cimiento del proyecto.'},
+  {id:'audio',icon:'🔊',cat:'audio',badge:'Audio 7.2',title:'Sistema de Sonido 7.2',brand:'7 canales + 2 subwoofers · DSP QSC',desc:'7 canales distribuidos y 2 subwoofers de graves. Cubre uniformemente el 100% del auditorio con calibración DSP integrada en QSC.',specs:[['Canales','7.2 (7 satélites + 2 subwoofers)'],['Cobertura','360° uniforme'],['Control','DSP integrado en Q-SYS'],['Calibración','Acústica post-instalación'],['Aplicación','Voz, música, videoconferencia'],['Gestión','Por escena automática QSC']],reason:'El sistema estéreo actual cubre desigualmente la sala. El 7.2 garantiza igual calidad de audio en cualquier asiento.'},
+  {id:'led',icon:'🖥',cat:'visual',badge:'Pantalla Principal',title:'Pantalla LED COB 136" Pitch 1.5',brand:'LED COB Direct · 4K · Brillo diurno',desc:'LED COB con pitch 1.5mm. Imagen 4K nativa sin puntos visibles. Brillo >1000 nits, visible con luz ambiental.',specs:[['Tamaño','136 pulgadas'],['Tecnología','LED COB Pitch 1.5'],['Resolución','4K 3840×2160'],['Brillo','≥1.000 nits'],['Contraste','≥5.000:1'],['Vida útil','≥100.000 horas']],reason:'Imagen de máxima calidad visible todo el día. Reemplaza definitivamente el proyector.'},
+  {id:'ptz',icon:'📹',cat:'video',badge:'Videoconferencia 4K',title:'2× Cámaras PTZ MaxHub P30',brand:'MaxHub P30 · 4K UHD · Seguimiento IA',desc:'PTZ 4K con seguimiento automático mediante IA. Sigue al ponente sin operador. Conexión IP PoE.',specs:[['Modelo','MaxHub P30'],['Resolución','4K UHD 30fps'],['Zoom óptico','12×'],['Seguimiento','IA automático'],['Conectividad','HDMI + IP PoE'],['Unidades','2 cámaras']],reason:'Videoconferencias institucionales con universidades internacionales. El seguimiento IA elimina la necesidad de camarógrafo.'},
+  {id:'qsc',icon:'⚙️',cat:'control',badge:'Control Central',title:'Plataforma QSC Q-SYS',brand:'Q-SYS Core · Procesador unificado',desc:'Plataforma estándar de la industria. Integra audio, video, luces, A/C, micrófonos y cámaras en un procesador.',specs:[['Fabricante','QSC (USA)'],['Plataforma','Q-SYS Core'],['Integración','Audio, video, luces, A/C, mics, cámaras'],['Interfaces','Botoneras + iPad + táctil'],['Escalabilidad','Alta — expandible'],['Soporte','Fabricante con actualizaciones']],reason:'Elimina la complejidad: un toque activa toda la sala. Estándar elegido por las mejores instituciones educativas del mundo.'},
+  {id:'mic',icon:'🎙',cat:'audio',badge:'Captura de Voz',title:'Micrófonos Inalámbricos + Techo',brand:'UHF Diversity + Beamforming · QSC',desc:'Inalámbricos de mano y solapa para ponentes, más beamforming de techo para videoconferencias. Gestionados desde QSC.',specs:[['Tipos','Inalámbrico + beamforming techo'],['Canales','Gestionados vía Q-SYS'],['Tecnología','UHF Diversity + Beamforming'],['Gestión','Desde rack y sala de control'],['Uso','Eventos + videoconferencia'],['Cobertura','Toda la sala']],reason:'Sistema de micrófonos bien diseñado, esencial para inteligibilidad en clases y videoconferencias.'},
+  {id:'luces',icon:'💡',cat:'control',badge:'Iluminación Inteligente',title:'Sistema de Iluminación DMX',brand:'DMX512 · Integrado en Q-SYS',desc:'Control DMX totalmente integrado en QSC. Escenas de iluminación para cada tipo de evento.',specs:[['Protocolo','DMX512'],['Control','Desde Q-SYS Core'],['Escenas','Por tipo de evento'],['Tipos','Escenario + ambiente'],['Automatización','Por escena o horario'],['Integración','Total con audio y video']],reason:'Iluminación adecuada es crítica para calidad de video en videoconferencias. Al integrarse en QSC, elimina ajuste manual.'},
+];
+
+const budgetData=[
+  {name:'Pantalla LED COB 136" Pitch 1.5 4K (reemplaza Epson L775U existente)',cat:'visual',qty:1,price:76000000,p:'Desarrollo futuro'},
+  {name:'Upgrade Sistema de Audio 7.2 (complementa los parlantesQSC existentes)',cat:'audio',qty:1,price:19000000,p:'Fortalecimiento'},
+  {name:'Cámaras PTZ 4K MaxHub P30 (Mejoramiento del sistema Yealink MeetingBar A30 Kit existente)',cat:'control',qty:2,price:16000000,p:'Desarrollo futuro'},
+  {name:'Plataforma QSC Q-SYS Core + Amplificadores',cat:'control',qty:1,price:21000000,p:'Fortalecimiento'},
+  {name:'Botoneras QSC (presentador + entrada )',cat:'control',qty:2,price:18000000,p:'Fortalecimiento'},
+  {name:'Micrófonos Inalámbricos + Techo Beamforming (Mejora sistema Shure BLX existente)',cat:'audio',qty:1,price:17000000,p:'Desarrollo futuro'},
+  {name:'Tratamiento Acústico Profesional (paneles + difusores)',cat:'acustica',qty:1,price:60000000,p:'Necesidad inmediata'},
+  {name:'Adecuación Sala de Control Técnico',cat:'civil',qty:1,price:8000000,p:'Necesidad inmediata'},
+  {name:'Iluminación DMX + Control Q-SYS',cat:'control',qty:1,price:9000000,p:'Fortalecimiento'},
+  {name:'Rack, UPS, Red AV/TI y Canalización',cat:'control',qty:1,price:9000000,p:'Necesidad inmediata'},
+  {name:'Instalación, Integración y Calibración Fases 1–2',cat:'civil',qty:1,price:12000000,p:'Contemplar en su ejecución'},
+];
+
+const scenesData=[
+  {id:'magistral',label:'Clase Magistral',icon:'🎓',details:[{l:'Luces',v:'100% — foco en escenario'},{l:'Audio 7.2',v:'Modo voz — mics inalámbricos activos'},{l:'Pantalla LED',v:'Activa — HDMI presentador'},{l:'Cámaras PTZ',v:'Seguimiento automático IA'},{l:'A/C',v:'22°C — modo silencioso'},{l:'Pantalla entrada',v:'Programa del evento'}]},
+  {id:'videoconf',label:'Videoconferencia',icon:'📹',details:[{l:'Luces',v:'Plana uniforme para cámara'},{l:'Audio',v:'Beamforming techo — modo conf.'},{l:'Pantalla LED',v:'Activa — remoto en primer plano'},{l:'Cámaras PTZ',v:'Encuadre + seguimiento IA'},{l:'A/C',v:'22°C — modo silencioso'},{l:'Sala control',v:'Monitor técnico activo'}]},
+  {id:'evento',label:'Evento Institucional',icon:'🎭',details:[{l:'Luces',v:'Gala — foco en escenario'},{l:'Audio 7.2',v:'Modo música — ecualizador evento'},{l:'Pantalla LED',v:'Contenido institucional / transmisión'},{l:'Cámaras PTZ',v:'Encuadres predefinidos'},{l:'A/C',v:'21°C — alta ocupación'},{l:'Pantalla entrada',v:'Bienvenida institucional'}]},
+  {id:'receso',label:'Standby',icon:'⏸️',details:[{l:'Luces',v:'30% — pasillo'},{l:'Audio',v:'Apagado'},{l:'Pantalla LED',v:'Standby — consumo mínimo'},{l:'Cámaras PTZ',v:'Apagadas'},{l:'A/C',v:'25°C — modo eco'},{l:'Pantalla entrada',v:'Horario y próximos eventos'}]},
+];
+
+const phasesData=[
+  {f:'F1',label:'Fase 1',title:'Ingeniería y Diseño',weeks:'Semanas 1–3',w:18,color:'#60A5FA',start:0,dur:3,milestones:['Levantamiento técnico del espacio','Planos definitivos y diseño acústico','Selección y cotización de proveedores'],hito:'Aprobación de diseños'},
+  {f:'F2',label:'Fase 2',title:'Obra Civil y Acústica',weeks:'Semanas 4–8',w:43,color:'#34D399',start:3,dur:5,milestones:['Instalación paneles acústicos + difusores','Adecuación sala de control técnico','Canalización eléctrica y red AV/TI'],hito:'Espacio físico listo'},
+  {f:'F3',label:'Fase 3',title:'Instalación AV y Rack',weeks:'Semanas 9–13',w:78,color:'#FBBF24',start:8,dur:5,milestones:['Montaje pantalla LED COB 136" + secundarias','Instalación sistema audio 7.2 y subwoofers','Rack, cámaras MaxHub P30 y botoneras QSC'],hito:'Integración técnica completa'},
+  {f:'F4',label:'Fase 4',title:'Calibración y Entrega',weeks:'Semanas 14–16',w:100,color:'#F87171',start:13,dur:3,milestones:['Calibración acústica profesional DSP','Programación de escenas QSC + pruebas','4 jornadas de capacitación + entrega oficial'],hito:'Auditorio operativo'},
+];
+
+/* ══════════════════════════════════
+   GALLERY
+══════════════════════════════════ */
+let currentSlide=0;
+const slides=document.querySelectorAll('.gallery-slide');
+const slideLabel=document.getElementById('gallery-label');
+
+function buildGalleryUI(){
+  const thumbs=document.getElementById('gallery-thumbs');
+  const dots=document.getElementById('slide-dots');
+  slides.forEach((s,i)=>{
+    const dot=document.createElement('div');
+    dot.className='w-2 h-2 rounded-full cursor-pointer transition-all '+(i===0?'bg-white':'bg-white/30');
+    dot.onclick=()=>goSlide(i);
+    dots.appendChild(dot);
+    // thumbnails (colored boxes as placeholders)
+    const th=document.createElement('div');
+    th.className='slide-thumb'+(i===0?' active':'');
+    th.style.cssText=`background:linear-gradient(135deg,#001428,#003060);display:flex;align-items:center;justify-content:center;color:rgba(213,224,235,.4);font-size:16px;cursor:pointer;`;
+    th.innerHTML='🖼️';
+    th.onclick=()=>goSlide(i);
+    thumbs.appendChild(th);
+  });
+}
+
+function goSlide(n){
+  slides[currentSlide].classList.remove('active');
+  document.querySelectorAll('#gallery-thumbs > div')[currentSlide]?.classList.remove('active');
+  document.querySelectorAll('#slide-dots > div')[currentSlide]?.classList.replace('bg-white','bg-white/30');
+  currentSlide=(n+slides.length)%slides.length;
+  slides[currentSlide].classList.add('active');
+  document.querySelectorAll('#gallery-thumbs > div')[currentSlide]?.classList.add('active');
+  document.querySelectorAll('#slide-dots > div')[currentSlide]?.classList.replace('bg-white/30','bg-white');
+  slideLabel.textContent=slides[currentSlide].dataset.label||'Auditorio PROPAL';
+}
+function nextSlide(){goSlide(currentSlide+1);}
+function prevSlide(){goSlide(currentSlide-1);}
+let autoSlide=setInterval(()=>nextSlide(),5000);
+
+function openLightbox(){
+  clearInterval(autoSlide);
+  const lc=document.getElementById('lightbox-content');
+  lc.innerHTML=slides[currentSlide].innerHTML;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  autoSlide=setInterval(()=>nextSlide(),5000);
+}
+buildGalleryUI();
+
+/* ══════════════════════════════════
+   SCENES
+══════════════════════════════════ */
+function buildScenes(){
+  document.getElementById('scene-btns').innerHTML=scenesData.map((s,i)=>
+    `<button class="sb${i===0?' active':''}" onclick="activateScene('${s.id}',this)">${s.icon} ${s.label}</button>`
+  ).join('');
+  activateScene('magistral',document.querySelector('#scene-btns .sb'));
+}
+function activateScene(id,btn){
+  document.querySelectorAll('.sb').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const s=scenesData.find(x=>x.id===id);
+  document.getElementById('scene-detail').innerHTML=`
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.2em;color:var(--cb-lt);margin-bottom:12px">${s.icon} ${s.label}</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      ${s.details.map(d=>`
+        <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px">
+          <div style="color:rgba(255,255,255,.3);font-size:9px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:3px">${d.l}</div>
+          <div style="color:rgba(255,255,255,.85);font-size:11px;font-weight:500">${d.v}</div>
+        </div>`).join('')}
+    </div>`;
+}
+buildScenes();
+
+
+/* ══════════════════════════════════
+   TECH GRID
+══════════════════════════════════ */
+const tfCats=[['all','Todos'],['acustica','🎵 Acústica'],['audio','🔊 Audio'],['visual','🖥 Visual'],['video','📹 Video'],['control','⚙️ Control']];
+function buildTechFilters(){
+  document.getElementById('tf-container').innerHTML=tfCats.map((c,i)=>
+    `<button class="tf${i===0?' active':''}" onclick="filterTech('${c[0]}',this)">${c[1]}</button>`
+  ).join('');
+}
+function buildTechGrid(filter='all'){
+  const items=filter==='all'?techData:techData.filter(t=>t.cat===filter);
+  document.getElementById('tech-grid').innerHTML=items.map(t=>`
+    <div class="cw cursor-pointer group" onclick="openModal('${t.id}')">
+      <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:14px">
+        <span style="font-size:26px">${t.icon}</span>
+        <span style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;padding:3px 10px;border-radius:999px;background:var(--cb-xl);color:var(--cb-blue)">${t.badge}</span>
+      </div>
+      <h4 style="font-weight:700;font-size:13px;color:var(--cb-navy);margin-bottom:5px">${t.title}</h4>
+      <p style="font-size:11px;color:var(--muted);margin-bottom:10px">${t.brand}</p>
+      <p style="font-size:11px;color:var(--muted);line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden">${t.desc}</p>
+      <div style="margin-top:14px;font-size:11px;font-weight:700;color:var(--cb-blue)">Ver ficha técnica →</div>
+    </div>`).join('');
+}
+function filterTech(cat,btn){
+  document.querySelectorAll('.tf').forEach(b=>{b.classList.remove('active');});
+  btn.classList.add('active');
+  buildTechGrid(cat);
+}
+buildTechFilters();
+buildTechGrid();
+
+/* ══════════════════════════════════
+   MODAL
+══════════════════════════════════ */
+function openModal(id){
+  const t=techData.find(x=>x.id===id);if(!t)return;
+  document.getElementById('m-icon').textContent=t.icon;
+  document.getElementById('m-badge').textContent=t.badge;
+  document.getElementById('m-title').textContent=t.title;
+  document.getElementById('m-brand').textContent=t.brand;
+  document.getElementById('m-desc').textContent=t.desc;
+  document.getElementById('m-specs').innerHTML=t.specs.map(([k,v])=>`<div style="background:var(--cb-xl);border-radius:12px;padding:12px"><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:3px">${k}</div><div style="font-size:13px;font-weight:700;color:var(--cb-navy)">${v}</div></div>`).join('');
+  document.getElementById('m-reason').innerHTML=`<strong>¿Por qué este componente?</strong><br><span style="opacity:.8">${t.reason}</span>`;
+  document.getElementById('modal-overlay').classList.add('open');
+}
+function closeModal(){document.getElementById('modal-overlay').classList.remove('open');}
+
+/* ══════════════════════════════════
+   BUDGET
+══════════════════════════════════ */
+const bfCats=[['all','Todos'],['visual','Visual'],['audio','Audio'],['control','Control'],['acustica','Acústica'],['civil','Obra']];
+function buildBudgetFilters(){
+  document.getElementById('bf-container').innerHTML=bfCats.map((c,i)=>
+    `<button class="tf${i===0?' active':''}" onclick="filterBudget('${c[0]}',this)">${c[1]}</button>`
+  ).join('');
+}
+function buildBudget(filter='all'){
+  const rows=filter==='all'?budgetData:budgetData.filter(b=>b.cat===filter);
+ const pc={
+  'Necesidad inmediata':'#1D4ED8',
+  'Fortalecimiento':'#6B7280',
+  'Desarrollo futuro':'#15803D'
+};
+
+const pb={
+  'Necesidad inmediata':'#EFF6FF',
+  'Fortalecimiento':'#F9FAFB',
+  'Desarrollo futuro':'#F0FDF4'
+}; document.getElementById('budget-body').innerHTML=rows.map(b=>`
+    <tr class="brow">
+      <td style="padding:11px 20px"><div style="font-weight:700;font-size:13px;color:var(--cb-navy)">${b.name}</div><span style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:2px 8px;border-radius:6px;background:${pb[b.p]};color:${pc[b.p]}">${b.p}</span></td>
+      <td style="padding:11px 14px;font-size:11px;color:var(--muted);text-transform:capitalize" class="hidden sm:table-cell">${b.cat}</td>
+      <td style="padding:11px;text-align:center;font-weight:600;font-size:13px;color:var(--cb-navy)">${b.qty}</td>
+      <td style="padding:11px 20px;text-align:right;font-weight:700;font-size:13px;color:var(--cb-navy)">$${b.price.toLocaleString('es-CO')}</td>
+    </tr>`).join('');
+  document.getElementById('budget-total').textContent='$'+rows.reduce((s,b)=>s+b.price,0).toLocaleString('es-CO');
+}
+function filterBudget(cat,btn){
+  document.querySelectorAll('#bf-container .tf').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  buildBudget(cat);
+}
+buildBudgetFilters();
+buildBudget();
+
+/* ══════════════════════════════════
+   ROADMAP TIMELINE
+══════════════════════════════════ */
+function buildTimeline(){
+  const c=document.getElementById('timeline-container');
+  c.innerHTML='<div class="tm-line"></div>'+phasesData.map(p=>`
+    <div class="cn ap" style="margin-left:0;border:1px solid rgba(255,255,255,.08)">
+      <div style="display:flex;gap:20px;align-items:start;flex-wrap:wrap">
+        <div class="tm-dot" style="background:${p.color};border-color:${p.color}44">${p.f}</div>
+        <div style="flex:1;min-width:200px">
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
+            <div style="font-weight:700;font-size:15px;color:white">${p.title}</div>
+            <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;padding:3px 12px;border-radius:999px;background:${p.color}22;color:${p.color};border:1px solid ${p.color}44">${p.weeks}</span>
+          </div>
+          <div class="pbar2" style="width:${p.w}%;margin-bottom:14px;background:linear-gradient(90deg,${p.color},${p.color}88)"></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px;margin-bottom:10px">
+            ${p.milestones.map(m=>`<div class="milestone">${m}</div>`).join('')}
+          </div>
+          <div style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;padding:5px 12px;border-radius:999px;background:${p.color}15;color:${p.color};border:1px solid ${p.color}30">
+            🏁 Hito: ${p.hito}
+          </div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function buildGantt(){
+  const g=document.getElementById('gantt-strip');
+  if(!g)return;
+  const colors=['#60A5FA','#34D399','#FBBF24','#F87171'];
+  const labels=['F1','F2','F3','F4'];
+  for(let w=0;w<16;w++){
+    const cell=document.createElement('div');
+    cell.style.cssText='height:28px;border-radius:3px;position:relative;';
+    let filled=false;
+    phasesData.forEach((p,i)=>{if(w>=p.start&&w<p.start+p.dur){cell.style.background=colors[i];cell.style.borderRadius='4px';if(w===p.start){cell.innerHTML=`<span style="position:absolute;left:4px;top:50%;transform:translateY(-50%);font-size:9px;font-weight:700;color:rgba(0,0,0,.6)">${labels[i]}</span>`;}filled=true;}});
+    if(!filled)cell.style.background='rgba(255,255,255,.06)';
+    g.appendChild(cell);
+  }
+}
+
+buildTimeline();
+buildGantt();
+
+/* ══════════════════════════════════
+   CHARTS (Chart.js)
+══════════════════════════════════ */
+let chartsInited=false;
+function initCharts(){
+  if(chartsInited)return;
+  chartsInited=true;
+
+  // Donut
+  const budgetByGroup={Visual:76000000,Audio:36000000,Control:73000000,Acústica:60000000,Obra:19500000};
+  const dColors=['#004E96','#1A6BBF','#60A5FA','#34D399','#94A3B8'];
+  const donutCtx=document.getElementById('donutChart')?.getContext('2d');
+  if(donutCtx){
+    new Chart(donutCtx,{type:'doughnut',data:{labels:Object.keys(budgetByGroup),datasets:[{data:Object.values(budgetByGroup),backgroundColor:dColors,borderWidth:0,hoverOffset:6}]},options:{cutout:'72%',plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' $'+ctx.parsed.toLocaleString('es-CO')}}}}});
+    document.getElementById('donut-legend').innerHTML=Object.entries(budgetByGroup).map(([k,v],i)=>`<div style="display:flex;align-items:center;gap:8px"><div style="width:10px;height:10px;border-radius:2px;background:${dColors[i]};flex-shrink:0"></div><span style="font-size:11px;color:var(--muted);flex:1">${k}</span><span style="font-size:11px;font-weight:700;color:var(--cb-navy)">$${Math.round(v/1000000)}M</span></div>`).join('');
+  }
+
+  // Bar
+  const barCtx=document.getElementById('barChart')?.getContext('2d');
+  if(barCtx){
+    new Chart(barCtx,{type:'bar',data:{labels:['Visual','Audio','Control','Acústica','Obra'],datasets:[{data:[76,36,73,60,19.5],backgroundColor:dColors,borderRadius:6,borderSkipped:false}]},options:{indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' $'+ctx.parsed.x+'M COP'}}},scales:{x:{grid:{color:'rgba(0,78,150,.06)'},ticks:{callback:v=>'$'+v+'M',font:{size:10}}},y:{grid:{display:false},ticks:{font:{size:11}}}}}});
+  }
+
+  // Gauges
+  const gauges=[{label:'Calidad Audio',val:92,prev:28},
+                {label:'Cobertura Visual',val:98,prev:45},
+                {label:'Cap. Híbrida',val:100,prev:0},
+                {label:'Facilidad Uso',val:95,prev:30}];
+  document.getElementById('gauges-container').innerHTML=gauges.map(g=>`
+    <div style="text-align:center">
+      <div class="gauge-wrap">
+        <div class="gauge-track"></div>
+        <div class="gauge-fill" id="gf-${g.label.replace(/\s/g,'')}" data-val="${g.val}"></div>
+      </div>
+      <div style="font-size:14px;font-weight:700;color:var(--cb-blue)">${g.val}%</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:2px">${g.label}</div>
+      <div style="font-size:9px;color:#DC2626;margin-top:2px">Antes: ${g.prev}%</div>
+    </div>`).join('');
+  setTimeout(()=>{
+    document.querySelectorAll('.gauge-fill').forEach(el=>{
+      const pct=parseFloat(el.dataset.val)/100;
+      el.style.transform=`rotate(${pct*180-180}deg)`;
+    });
+  },200);
+
+  // Radar
+  const radarCtx=document.getElementById('radarChart')?.getContext('2d');
+  if(radarCtx){
+    new Chart(radarCtx,{type:'radar',data:{labels:['Calidad Audio','Imagen','Cap. Híbrida','Automatización','Exp. Usuario','Nivel Innov.'],datasets:[{label:'Estado Actual',data:[25,35,5,10,30,15],backgroundColor:'rgba(220,38,38,.1)',borderColor:'rgba(220,38,38,.6)',borderWidth:2,pointBackgroundColor:'rgba(220,38,38,.8)'},{label:'Propuesta PROPAL',data:[95,98,100,100,97,98],backgroundColor:'rgba(0,78,150,.1)',borderColor:'rgba(0,78,150,.8)',borderWidth:2,pointBackgroundColor:'rgba(0,78,150,.9)'}]},options:{plugins:{legend:{display:true,position:'bottom',labels:{font:{size:10},boxWidth:12}}},scales:{r:{min:0,max:100,ticks:{display:false},grid:{color:'rgba(0,78,150,.1)'},pointLabels:{font:{size:10}}}}}});
+  }
+
+  // Impact bars
+  const dims=[['Experiencia del Usuario',95,30],['Innovación Educativa',98,15],['Conectividad Global',100,0],['Eficiencia Operativa',97,20],['Imagen Institucional',95,40],['Preparación al Futuro',98,25]];
+  document.getElementById('impact-bars').innerHTML=dims.map(([l,after,before])=>`
+    <div>
+      <div style="display:flex;justify-content:space-between;font-size:11px;font-weight:600;color:var(--cb-navy);margin-bottom:4px">
+        <span>${l}</span><span style="color:var(--cb-blue)">${after}%</span>
+      </div>
+      <div style="height:6px;background:var(--cb-xl);border-radius:3px;overflow:hidden;position:relative">
+        <div class="impact-bar-fill" style="height:100%;border-radius:3px;transform-origin:left;transform:scaleX(0);transition:transform 1.2s cubic-bezier(.23,1,.32,1);background:linear-gradient(90deg,var(--cb-blue),var(--cb-mid))" data-w="${after/100}"></div>
+        <div style="position:absolute;top:0;height:100%;border-radius:3px;background:rgba(220,38,38,.5);width:${before}%"></div>
+      </div>
+    </div>`).join('');
+  setTimeout(()=>{
+    document.querySelectorAll('.impact-bar-fill').forEach(b=>{
+      b.style.transform=`scaleX(${b.dataset.w})`;
+    });
+  },300);
+}
+
+/* ══════════════════════════════════
+   COUNT-UP
+══════════════════════════════════ */
+function animateCountUp(el){
+  const target=parseInt(el.dataset.target);
+  const dur=1800;const step=16;
+  const inc=target/(dur/step);
+  let cur=0;
+  const t=setInterval(()=>{
+    cur+=inc;if(cur>=target){cur=target;clearInterval(t);}
+    el.textContent=Math.round(cur).toLocaleString('es-CO');
+  },step);
+}
+
+/* ══════════════════════════════════
+   PRESENTER MODE
+══════════════════════════════════ */
+let presenterActive=false;
+const navbar=document.getElementById('nav');
+const sideNav=document.getElementById('snc');
+const exitBtn=document.getElementById('xpb');
+function togglePresenter(){
+  presenterActive=!presenterActive;
+  if(presenterActive){navbar.style.transform='translateY(-100%)';sideNav.style.opacity='0';sideNav.style.pointerEvents='none';exitBtn.style.display='block';}
+  else{navbar.style.transform='';sideNav.style.opacity='';sideNav.style.pointerEvents='';exitBtn.style.display='none';}
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&presenterActive)togglePresenter();});
+
+/* ══════════════════════════════════
+   INTERSECTION OBSERVERS
+══════════════════════════════════ */
+const allSecs=document.querySelectorAll('section[id]');
+const topLinks=document.querySelectorAll('.ntl');
+const fanIs=document.querySelectorAll('.fni');
+const dotsT=document.querySelectorAll('[data-ind2]');
+const dotsP=document.querySelectorAll('[data-ind]');
+const secObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const id=e.target.id;
+      topLinks.forEach(l=>l.classList.toggle('active',l.dataset.sec===id));
+      fanIs.forEach(f=>f.classList.toggle('active',f.dataset.target===id));
+      dotsT.forEach(d=>d.classList.toggle('active',d.dataset.ind2===id));
+      dotsP.forEach(d=>d.classList.toggle('active',d.dataset.ind===id));
+    }
+  });
+},{threshold:0.3});
+allSecs.forEach(s=>secObs.observe(s));
+dotsT.forEach(d=>{d.addEventListener('click',()=>document.getElementById(d.dataset.ind2)?.scrollIntoView({behavior:'smooth'}));});
+dotsP.forEach(d=>{d.addEventListener('click',()=>document.getElementById(d.dataset.ind)?.scrollIntoView({behavior:'smooth'}));});
+
+// Appear
+let countUpDone=false;
+const appObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('vis');
+      e.target.querySelectorAll('.kfill').forEach(b=>{
+        setTimeout(()=>b.classList.add('vis'),100);
+      });
+    }
+  });
+},{threshold:0.08});
+document.querySelectorAll('.ap,.ap2').forEach(el=>appObs.observe(el));
+
+// Phase bars
+const phObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.querySelectorAll('.pbar2').forEach(b=>b.classList.add('vis'));});
+},{threshold:0.2});
+document.querySelectorAll('#timeline-container>div').forEach(el=>phObs.observe(el));
+
+// Charts + count-up
+const dashObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting&&!chartsInited)setTimeout(initCharts,200);});
+},{threshold:0.1});
+const dashEl=document.getElementById('dashboard');
+if(dashEl)dashObs.observe(dashEl);
+
+const visionObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting&&!countUpDone){
+      countUpDone=true;
+      document.querySelectorAll('.count-up').forEach(el=>animateCountUp(el));
+    }
+  });
+},{threshold:0.3});
+const visEl=document.getElementById('vision');
+if(visEl)visionObs.observe(visEl);
+
+// Side nav toggle
+const snt=document.getElementById('snt');
+const snp=document.getElementById('snp');
+snt.addEventListener('click',e=>{e.stopPropagation();snp.classList.toggle('open');snt.classList.toggle('open');});
+document.addEventListener('click',e=>{if(!snt.contains(e.target)&&!snp.contains(e.target)){snp.classList.remove('open');snt.classList.remove('open');}});
+snp.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{snp.classList.remove('open');snt.classList.remove('open');}));
+
+// Nav scroll
+window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>40);},{passive:true});
+
+/* Video */
+  const vw = document.getElementById('video-wrap');
+  if(CONFIG.video.src){
+    vw.innerHTML = `<video controls preload="metadata" ${CONFIG.video.poster?`poster="${CONFIG.video.poster}"`:''}
+      style="display:block;width:100%">
+      <source src="${CONFIG.video.src}" type="video/mp4">
+    </video>`;
+  } else {
+    vw.innerHTML = `
+      <div class="video-placeholder">
+        <div class="play-btn-big">▶</div>
+        <div style="color:rgba(255,255,255,.4);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase">Espacio para Video de Demostración</div>
+        <div class="mono" style="color:rgba(255,255,255,.25);font-size:10px">Agregar: CONFIG.video.src = "ruta/video.mp4"</div>
+      </div>`;
+  }
+
+
+/* ════════════════════════════════════════════════════════════════
+   PROBLEMAS
+════════════════════════════════════════════════════════════════ */
+function buildProblemas(){
+  const c = document.getElementById('prob-list');
+  c.innerHTML = PROBLEMAS.map(p=>`
+    <div class="prob-item">
+      <span class="prob-num">${p.num}</span>
+      <span class="prob-icon">${p.icon}</span>
+      <div style="flex:1">
+        <div style="font-weight:600;font-size:14px;color:var(--navy);margin-bottom:3px">${p.titulo}</div>
+        <span class="prob-sev" style="background:${p.color}15;color:${p.color}">${p.gravedad}</span>
+      </div>
+    </div>`).join('');
+}
+buildProblemas();
+
+/* ════════════════════════════════════════════════════════════════
+   GALERÍA
+════════════════════════════════════════════════════════════════ */
+let gIdx=0, gTimer=null;
+function buildGallery(){
+  const stage = document.getElementById('gallery-stage');
+  const thumbs = document.getElementById('gallery-thumbs');
+  const dots   = document.getElementById('gallery-dots');
+  const lbl    = document.getElementById('gallery-lbl');
+
+  /* insert slides before overlay */
+  CONFIG.galeria.forEach((s,i)=>{
+    const slide = document.createElement('div');
+    slide.className = 'gallery-slide' + (i===0?' on':'');
+    if(s.src){
+      slide.innerHTML = `<img src="${s.src}" alt="${s.label}" loading="lazy">`;
+    } else {
+      slide.innerHTML = `<div class="gallery-placeholder">
+        <div style="font-size:48px;margin-bottom:12px">${s.emoji}</div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase">${s.label}</div>
+        <div class="mono" style="font-size:10px;margin-top:6px;opacity:.5">Agregar imagen en CONFIG.galeria[${i}].src</div>
+      </div>`;
+    }
+    stage.insertBefore(slide, stage.querySelector('.gallery-overlay'));
+
+    /* thumb */
+    const th = document.createElement('div');
+    th.className = 'thumb-btn' + (i===0?' on':'');
+    th.innerHTML = s.src ? `<img src="${s.src}" alt="${s.label}">` : s.emoji;
+    th.onclick = ()=>gGo(i);
+    thumbs.appendChild(th);
+
+    /* dot */
+    const d = document.createElement('div');
+    d.className = 'slide-dot' + (i===0?' on':'');
+    d.onclick = ()=>gGo(i);
+    dots.appendChild(d);
+  });
+
+  lbl.textContent = CONFIG.galeria[0].label;
+  gTimer = setInterval(gNext, 5500);
+}
+
+function gGo(n){
+  const slides  = document.querySelectorAll('.gallery-slide');
+  const thumbs  = document.querySelectorAll('.thumb-btn');
+  const dots    = document.querySelectorAll('.slide-dot');
+  slides[gIdx].classList.remove('on');
+  thumbs[gIdx]?.classList.remove('on');
+  dots[gIdx]?.classList.remove('on');
+  gIdx = (n + CONFIG.galeria.length) % CONFIG.galeria.length;
+  slides[gIdx].classList.add('on');
+  thumbs[gIdx]?.classList.add('on');
+  dots[gIdx]?.classList.add('on');
+  document.getElementById('gallery-lbl').textContent = CONFIG.galeria[gIdx].label;
+  clearInterval(gTimer);
+  gTimer = setInterval(gNext, 5500);
+}
+function gNext(){ gGo(gIdx+1); }
+function gPrev(){ gGo(gIdx-1); }
+
+function openLB(){
+  const slides = document.querySelectorAll('.gallery-slide');
+  document.getElementById('lb-content').innerHTML = slides[gIdx].innerHTML;
+  document.getElementById('lightbox').style.display = 'flex';
+}
+function closeLB(){ document.getElementById('lightbox').style.display = 'none'; }
+buildGallery();
+
+// Lógica para abrir/cerrar el Simulador 3D Render
+        const render3dModal = document.getElementById('render-3d-modal');
+        function open3DRenderModal() {
+            render3dModal.classList.replace('hidden', 'flex');
+            document.body.classList.add('overflow-hidden');
+        }
+        function close3DRenderModal() {
+            render3dModal.classList.replace('flex', 'hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        function openTransformationVideo() {
+
+  const modal = document.getElementById('video-modal');
+
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+
+  document.getElementById('transformationVideo').play();
+}
+
+function closeTransformationVideo() {
+
+  const modal = document.getElementById('video-modal');
+
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+
+  const video = document.getElementById('transformationVideo');
+
+  video.pause();
+  video.currentTime = 0;
+}
+
+document.getElementById('video-modal').addEventListener('click', function(e){
+
+  if(e.target === this){
+      closeTransformationVideo();
+  }
+
+});
+
+function openQSCImage() {
+    const modal = document.getElementById('qscModal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+}
+
+function closeQSCImage() {
+    const modal = document.getElementById('qscModal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+}
+
+document.getElementById('qscModal').addEventListener('click', function(e){
+    if(e.target === this){
+        closeQSCImage();
+    }
+});
+
+document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+        closeQSCImage();
+    }
+});        
+
+</script>
+</body>
+</html>
